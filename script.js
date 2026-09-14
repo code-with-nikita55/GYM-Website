@@ -33,7 +33,7 @@ menuToggle.addEventListener("click", () => {
 });
 
 
-/* Close mobile menu after clicking a link */
+/* Close menu after clicking a link */
 
 document.querySelectorAll(".nav-menu a").forEach(link => {
 
@@ -60,7 +60,6 @@ window.addEventListener("scroll", () => {
     sections.forEach(section => {
 
         const sectionTop = section.offsetTop - 150;
-
         const sectionHeight = section.offsetHeight;
 
         if (
@@ -160,20 +159,7 @@ contactForm.addEventListener("submit", function(event) {
         FRONTEND ONLY
 
         Your friend's backend can later connect
-        this form to a database/API.
-
-        Example:
-
-        fetch("/api/enquiry", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: name,
-                phone: phone
-            })
-        });
+        this form to an API/database.
     */
 
 
@@ -191,7 +177,7 @@ contactForm.addEventListener("submit", function(event) {
 
 
 /* =====================================================
-   PREVENT EMPTY # LINKS FROM JUMPING
+   PREVENT EMPTY # LINKS
 ===================================================== */
 
 document.querySelectorAll('a[href="#"]').forEach(link => {

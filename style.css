@@ -60,7 +60,7 @@ button {
     --text-light: #d1d1d1;
     --muted: #929292;
 
-    --border: rgba(255,255,255,.10);
+    --border: rgba(255, 255, 255, 0.10);
 
     --container: 1200px;
 }
@@ -89,9 +89,7 @@ button {
 ===================================================== */
 
 .navbar {
-
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -105,8 +103,7 @@ button {
 }
 
 .navbar.scrolled {
-
-    background: rgba(9,9,9,.95);
+    background: rgba(9, 9, 9, .96);
 
     backdrop-filter: blur(15px);
 
@@ -116,7 +113,6 @@ button {
 }
 
 .nav-container {
-
     display: flex;
 
     align-items: center;
@@ -125,7 +121,6 @@ button {
 }
 
 .logo {
-
     font-family: "Barlow Condensed", sans-serif;
 
     font-size: 34px;
@@ -140,12 +135,11 @@ button {
 }
 
 .nav-menu {
-
     display: flex;
 
     align-items: center;
 
-    gap: 26px;
+    gap: 25px;
 }
 
 .nav-menu a {
@@ -228,9 +222,9 @@ button {
     background:
         linear-gradient(
             90deg,
-            rgba(0,0,0,.93),
-            rgba(0,0,0,.70),
-            rgba(0,0,0,.32)
+            rgba(0, 0, 0, .93),
+            rgba(0, 0, 0, .70),
+            rgba(0, 0, 0, .32)
         );
 }
 
@@ -347,7 +341,7 @@ button {
 
 .btn-outline {
 
-    border: 1px solid rgba(255,255,255,.4);
+    border: 1px solid rgba(255, 255, 255, .4);
 }
 
 .btn-outline:hover {
@@ -410,7 +404,7 @@ button {
 
     display: grid;
 
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .highlight {
@@ -423,7 +417,7 @@ button {
 
     padding: 25px 20px;
 
-    border-right: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0, 0, 0, .15);
 }
 
 .highlight:last-child {
@@ -680,7 +674,7 @@ button {
 
     display: grid;
 
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 18px;
 }
@@ -754,7 +748,7 @@ button {
 
     display: grid;
 
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 18px;
 }
@@ -793,7 +787,7 @@ button {
     background:
         linear-gradient(
             transparent,
-            rgba(0,0,0,.95)
+            rgba(0, 0, 0, .95)
         );
 }
 
@@ -852,7 +846,7 @@ button {
 
     inset: 0;
 
-    background: rgba(0,0,0,.78);
+    background: rgba(0, 0, 0, .78);
 }
 
 .trial-content {
@@ -866,7 +860,7 @@ button {
 
     font-family: "Barlow Condensed", sans-serif;
 
-    font-size: clamp(3.5rem,7vw,6.5rem);
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
 
     line-height: .88;
 
@@ -895,7 +889,7 @@ button {
 
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 20px;
 }
@@ -940,7 +934,7 @@ button {
     background:
         linear-gradient(
             transparent,
-            rgba(0,0,0,.95)
+            rgba(0, 0, 0, .95)
         );
 }
 
@@ -980,7 +974,7 @@ button {
 
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 20px;
 }
@@ -994,6 +988,15 @@ button {
     border: 1px solid var(--border);
 
     padding: 38px;
+
+    transition: .3s ease;
+}
+
+.price-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: rgba(227, 38, 46, .65);
 }
 
 .price-card.featured {
@@ -1001,6 +1004,11 @@ button {
     border-color: var(--primary);
 
     transform: translateY(-10px);
+}
+
+.price-card.featured:hover {
+
+    transform: translateY(-17px);
 }
 
 .popular {
@@ -1064,6 +1072,7 @@ button {
 }
 
 .price-card ul {
+
     list-style: none;
 }
 
@@ -1081,6 +1090,7 @@ button {
 }
 
 .price-card li i {
+
     color: var(--primary);
 }
 
@@ -1113,6 +1123,18 @@ button {
     border-color: var(--primary);
 }
 
+.premium-card {
+
+    border-color: rgba(227, 38, 46, .40);
+}
+
+.premium-card:hover {
+
+    border-color: var(--primary);
+
+    transform: translateY(-7px);
+}
+
 .pricing-note {
 
     text-align: center;
@@ -1133,7 +1155,7 @@ button {
 
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 20px;
 }
@@ -1189,10 +1211,12 @@ button {
 
 .member strong,
 .member span {
+
     display: block;
 }
 
 .member strong {
+
     font-size: 12px;
 }
 
@@ -1241,7 +1265,7 @@ button {
 
     display: flex;
 
-    align-items: center;
+    align-items: flex-start;
 
     gap: 14px;
 }
@@ -1389,7 +1413,7 @@ button {
 
     display: grid;
 
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr;
 
     gap: 40px;
 
@@ -1547,17 +1571,18 @@ button {
 @media (max-width: 1100px) {
 
     .nav-menu {
-        gap: 18px;
+        gap: 16px;
     }
 
     .goal-grid,
     .program-grid {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .about-grid {
         gap: 45px;
     }
+
 }
 
 
@@ -1601,7 +1626,7 @@ button {
     }
 
     .highlight-grid {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .about-grid,
@@ -1610,8 +1635,11 @@ button {
     }
 
     .trainer-grid,
-    .pricing-grid,
     .story-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pricing-grid {
         grid-template-columns: 1fr 1fr;
     }
 
@@ -1619,9 +1647,14 @@ button {
         transform: none;
     }
 
+    .price-card.featured:hover {
+        transform: translateY(-7px);
+    }
+
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }
+
 }
 
 
@@ -1699,6 +1732,7 @@ button {
     .hero-bottom-text {
         display: none;
     }
+
 }
 
 
@@ -1715,4 +1749,5 @@ button {
     .logo {
         font-size: 28px;
     }
+
 }
