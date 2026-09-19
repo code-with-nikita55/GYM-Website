@@ -33,7 +33,7 @@ menuToggle.addEventListener("click", () => {
 });
 
 
-/* Close menu after clicking a link */
+/* Close mobile menu */
 
 document.querySelectorAll(".nav-menu a").forEach(link => {
 
@@ -55,11 +55,12 @@ const navLinks = document.querySelectorAll(".nav-menu a");
 
 window.addEventListener("scroll", () => {
 
-    let current = "";
+    let currentSection = "";
 
     sections.forEach(section => {
 
         const sectionTop = section.offsetTop - 150;
+
         const sectionHeight = section.offsetHeight;
 
         if (
@@ -67,7 +68,7 @@ window.addEventListener("scroll", () => {
             window.scrollY < sectionTop + sectionHeight
         ) {
 
-            current = section.getAttribute("id");
+            currentSection = section.getAttribute("id");
 
         }
 
@@ -78,9 +79,8 @@ window.addEventListener("scroll", () => {
 
         link.classList.remove("active");
 
-
         if (
-            link.getAttribute("href") === "#" + current
+            link.getAttribute("href") === "#" + currentSection
         ) {
 
             link.classList.add("active");
@@ -128,6 +128,7 @@ backToTop.addEventListener("click", () => {
 
 /* =====================================================
    CONTACT FORM
+   FRONTEND ONLY
 ===================================================== */
 
 const contactForm = document.getElementById("contactForm");
@@ -143,6 +144,9 @@ contactForm.addEventListener("submit", function(event) {
     const phone =
         document.getElementById("phone").value.trim();
 
+    const interest =
+        document.getElementById("interest").value;
+
 
     if (!name || !phone) {
 
@@ -155,19 +159,45 @@ contactForm.addEventListener("submit", function(event) {
     }
 
 
-    /*
-        FRONTEND ONLY
+    let selectedInterest = "your enquiry";
 
-        Your friend's backend can later connect
-        this form to an API/database.
+    if (interest) {
+
+        selectedInterest = interest;
+
+    }
+
+
+    /*
+        FRONTEND ONLY FOR NOW.
+
+        Your friend's backend can later replace
+        this alert with an API request.
+
+        Example:
+
+        fetch("/api/enquiry", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone,
+                interest: interest
+            })
+        });
     */
 
 
     alert(
         "Thank you, " +
         name +
-        "! Your enquiry has been received. " +
-        "The MS Fitness team will contact you soon."
+        "!\n\n" +
+        "Your enquiry about " +
+        selectedInterest +
+        " has been received.\n\n" +
+        "The MS Fitness team can contact you soon."
     );
 
 
@@ -177,7 +207,7 @@ contactForm.addEventListener("submit", function(event) {
 
 
 /* =====================================================
-   PREVENT EMPTY # LINKS
+   PREVENT EMPTY LINKS
 ===================================================== */
 
 document.querySelectorAll('a[href="#"]').forEach(link => {
