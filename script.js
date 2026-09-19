@@ -7,13 +7,9 @@ const navbar = document.getElementById("navbar");
 window.addEventListener("scroll", () => {
 
     if (window.scrollY > 50) {
-
         navbar.classList.add("scrolled");
-
     } else {
-
         navbar.classList.remove("scrolled");
-
     }
 
 });
@@ -27,22 +23,13 @@ const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
 
 menuToggle.addEventListener("click", () => {
-
     navMenu.classList.toggle("show");
-
 });
 
-
-/* Close menu after clicking a link */
-
 document.querySelectorAll(".nav-menu a").forEach(link => {
-
     link.addEventListener("click", () => {
-
         navMenu.classList.remove("show");
-
     });
-
 });
 
 
@@ -66,25 +53,17 @@ window.addEventListener("scroll", () => {
             window.scrollY >= sectionTop &&
             window.scrollY < sectionTop + sectionHeight
         ) {
-
             current = section.getAttribute("id");
-
         }
 
     });
-
 
     navLinks.forEach(link => {
 
         link.classList.remove("active");
 
-
-        if (
-            link.getAttribute("href") === "#" + current
-        ) {
-
+        if (link.getAttribute("href") === "#" + current) {
             link.classList.add("active");
-
         }
 
     });
@@ -101,26 +80,18 @@ const backToTop = document.getElementById("backToTop");
 window.addEventListener("scroll", () => {
 
     if (window.scrollY > 500) {
-
         backToTop.classList.add("show");
-
     } else {
-
         backToTop.classList.remove("show");
-
     }
 
 });
 
-
 backToTop.addEventListener("click", () => {
 
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
 
 });
@@ -132,46 +103,63 @@ backToTop.addEventListener("click", () => {
 
 const contactForm = document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", function(event) {
+contactForm.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const interest = document.getElementById("interest").value;
+    const message = document.getElementById("message").value.trim();
 
     if (!name || !phone) {
-
-        alert(
-            "Please enter your name and phone number."
-        );
-
+        alert("Please enter your name and phone number.");
         return;
-
     }
 
+    try {
 
-    /*
-        FRONTEND ONLY
+        const response = await fetch(
+            "http://localhost:5000/api/enquiries",
+            {
+                method: "POST",
 
-        Your friend's backend can later connect
-        this form to an API/database.
-    */
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    interest: interest,
+                    message: message
+                })
+            }
+        );
 
-    alert(
-        "Thank you, " +
-        name +
-        "! Your enquiry has been received. " +
-        "The MS Fitness team will contact you soon."
-    );
+        const result = await response.json();
 
+        if (result.success) {
 
-    contactForm.reset();
+            alert(result.message);
+
+            contactForm.reset();
+
+        } else {
+
+            alert("Something went wrong.");
+
+        }
+
+    } catch (error) {
+
+        console.error("Error:", error);
+
+        alert("Could not connect to the gym server.");
+
+    }
 
 });
 

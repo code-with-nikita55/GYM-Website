@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MS Fitness | Enquiries</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #111;
+            color: #fff;
+            padding: 40px;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =========================
+           TOP SECTION
+        ========================= */
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 35px;
+
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .top h1 {
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .top p {
+            color: #999;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .count {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-box {
+            background: #181818;
+
+            border: 1px solid #2d2d2d;
+            border-radius: 4px;
+
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+
+            padding: 16px;
+
+            font-size: 12px;
+            letter-spacing: 1px;
+
+            color: #aaa;
+
+            background: #151515;
+
+            border-bottom: 1px solid #333;
+
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 16px;
+
+            font-size: 14px;
+
+            border-bottom: 1px solid #292929;
+
+            color: #ddd;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #202020;
+        }
+
+
+        /* =========================
+           NAME / PHONE
+        ========================= */
+
+        .name {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .phone {
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           DELETE BUTTON
+        ========================= */
+
+        .delete-btn {
+            background: transparent;
+
+            color: #ff5a5a;
+
+            border: 1px solid #ff5a5a;
+
+            padding: 7px 12px;
+
+            border-radius: 3px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            transition: 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #ff5a5a;
+            color: #111;
+        }
+
+
+        /* =========================
+           EMPTY MESSAGE
+        ========================= */
+
+        .empty {
+            text-align: center;
+
+            padding: 40px;
+
+            color: #888;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .top {
+                display: block;
+            }
+
+            .count {
+                margin-top: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="page">
+
+        <!-- =========================
+             HEADER
+        ========================= -->
+
+        <div class="top">
+
+            <div>
+
+                <h1>MS FITNESS</h1>
+
+                <p>Customer Enquiries</p>
+
+            </div>
+
+
+            <div class="count" id="count">
+
+                Loading...
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ENQUIRIES TABLE
+        ========================= -->
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>NAME</th>
+
+                        <th>PHONE</th>
+
+                        <th>EMAIL</th>
+
+                        <th>INTEREST</th>
+
+                        <th>MESSAGE</th>
+
+                        <th>DATE</th>
+
+                        <th>ACTION</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="enquiriesTable">
+
+                    <tr>
+
+                        <td colspan="7" class="empty">
+
+                            Loading enquiries...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* =========================
+           LOAD ENQUIRIES
+        ========================= */
+
+        async function loadEnquiries() {
+
+            const table =
+                document.getElementById("enquiriesTable");
+
+            const count =
+                document.getElementById("count");
+
+
+            try {
+
+                const response = await fetch(
+                    "http://localhost:5000/api/enquiries"
+                );
+
+
+                const enquiries =
+                    await response.json();
+
+
+                table.innerHTML = "";
+
+
+                /* =========================
+                   COUNT
+                ========================= */
+
+                count.textContent =
+                    enquiries.length +
+                    (
+                        enquiries.length === 1
+                            ? " enquiry"
+                            : " enquiries"
+                    );
+
+
+                /* =========================
+                   NO ENQUIRIES
+                ========================= */
+
+                if (enquiries.length === 0) {
+
+                    table.innerHTML = `
+                        <tr>
+
+                            <td colspan="7" class="empty">
+
+                                No enquiries yet.
+
+                            </td>
+
+                        </tr>
+                    `;
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   DISPLAY ENQUIRIES
+                ========================= */
+
+                enquiries.forEach(enquiry => {
+
+                    const row =
+                        document.createElement("tr");
+
+
+                    /* =========================
+                       DATE
+                    ========================= */
+
+                    let date = "-";
+
+
+                    if (enquiry.created_at) {
+
+                        date =
+                            enquiry.created_at.split(" ")[0];
+
+                    }
+
+
+                    /* =========================
+                       ROW
+                    ========================= */
+
+                    row.innerHTML = `
+
+                        <td class="name">
+                            ${enquiry.name}
+                        </td>
+
+                        <td class="phone">
+                            ${enquiry.phone}
+                        </td>
+
+                        <td>
+                            ${enquiry.email || "-"}
+                        </td>
+
+                        <td>
+                            ${enquiry.interest || "-"}
+                        </td>
+
+                        <td>
+                            ${enquiry.message || "-"}
+                        </td>
+
+                        <td>
+                            ${date}
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteEnquiry(${enquiry.id})"
+                            >
+                                Delete
+                            </button>
+
+                        </td>
+
+                    `;
+
+
+                    table.appendChild(row);
+
+                });
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                count.textContent = "";
+
+
+                table.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="7" class="empty">
+
+                            Could not connect to the server.
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+
+        }
+
+
+        /* =========================
+           DELETE ENQUIRY
+        ========================= */
+
+        async function deleteEnquiry(id) {
+
+            const confirmDelete = confirm(
+                "Are you sure you want to delete this enquiry?"
+            );
+
+
+            if (!confirmDelete) {
+
+                return;
+
+            }
+
+
+            try {
+
+                const response = await fetch(
+
+                    `http://localhost:5000/api/enquiries/${id}`,
+
+                    {
+                        method: "DELETE"
+                    }
+
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    loadEnquiries();
+
+                } else {
+
+                    alert(
+                        "Could not delete enquiry."
+                    );
+
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                alert(
+                    "Could not connect to the server."
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           FIRST LOAD
+        ========================= */
+
+        loadEnquiries();
+
+
+        /* =========================
+           AUTO REFRESH
+           Every 10 seconds
+        ========================= */
+
+        setInterval(
+            loadEnquiries,
+            10000
+        );
+
+    </script>
+
+</body>
+
+</html>
