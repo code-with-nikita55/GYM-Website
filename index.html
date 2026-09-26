@@ -1,1950 +1,1106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>ELVYRA | Elevate Your Strength</title>
     <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        name="description"
+        content="ELVYRA — a modern fitness experience designed to elevate your strength."
     >
 
-    <title>ELVYRA | Elevate Your Strength.</title>
-
-
-    <!-- =================================================
-         FONTS
-    ================================================== -->
-
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800;900&display=swap"
         rel="stylesheet"
     >
 
-
-    <!-- =================================================
-         FONT AWESOME
-    ================================================== -->
-
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-
-    <!-- =================================================
-         THREE.JS
-    ================================================== -->
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"
-    ></script>
-
-
-    <!-- =================================================
-         STYLE
-    ================================================== -->
-
+    <!-- Your CSS -->
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     PAGE LOADER
-===================================================== -->
-
-<div class="page-loader" id="pageLoader">
-
-    <div class="loader-logo">
-        ELV<span>YRA</span>
+    <!-- =========================
+         PAGE LOADER
+    ========================== -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">E</div>
+        <div class="loader-bar">
+            <span></span>
+        </div>
+        <p>ELVYRA</p>
     </div>
 
-    <div class="loader-line">
-        <span></span>
-    </div>
 
-</div>
-
-
-<!-- =====================================================
-     CURSOR
-===================================================== -->
-
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
+    <!-- =========================
+         CURSOR
+    ========================== -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
 
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
 
-<header class="navbar" id="navbar">
+            <a href="#home" class="brand">
+                <span class="brand-mark">E</span>
 
-    <div class="container nav-container">
-
-
-        <a href="#home" class="logo">
-            ELV<span>YRA</span>
-        </a>
-
-
-        <nav class="nav-menu" id="navMenu">
-
-            <a href="#home" class="active">Home</a>
-
-            <a href="#about">About</a>
-
-            <a href="#programs">Programs</a>
-
-            <a href="#experience">Experience</a>
-
-            <a href="#trainers">Trainers</a>
-
-            <a href="#membership">Membership</a>
-
-            <a href="#contact">Contact</a>
-
-        </nav>
-
-
-        <a
-            href="#membership"
-            class="nav-cta"
-        >
-            JOIN ELVYRA
-        </a>
-
-
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Menu"
-        >
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section
-    class="hero"
-    id="home"
->
-
-
-    <!-- 3D CANVAS -->
-
-    <canvas id="heroCanvas"></canvas>
-
-
-    <!-- BACKGROUND ELEMENTS -->
-
-    <div class="hero-grid"></div>
-
-    <div class="hero-noise"></div>
-
-    <div class="hero-vignette"></div>
-
-
-    <!-- HERO CONTENT -->
-
-    <div class="container hero-content">
-
-        <div class="hero-copy">
-
-
-            <div class="hero-eyebrow">
-
-                <span></span>
-
-                ELVYRA FITNESS
-
-                <span></span>
-
-            </div>
-
-
-            <h1>
-
-                ELEVATE
-
-                <span>
-                    YOUR
+                <span class="brand-text">
+                    <strong>ELVYRA</strong>
+                    <small>ELEVATE YOUR STRENGTH</small>
                 </span>
-
-                STRENGTH.
-
-            </h1>
-
-
-            <p>
-
-                Train with purpose. Build real strength.
-                Create a healthier and more confident version
-                of yourself.
-
-            </p>
-
-
-            <div class="hero-actions">
-
-
-                <a
-                    href="#membership"
-                    class="btn btn-primary"
-                >
-
-                    EXPLORE MEMBERSHIP
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-
-                <a
-                    href="#experience"
-                    class="btn btn-glass"
-                >
-
-                    ENTER ELVYRA
-
-                    <i class="fa-solid fa-chevron-down"></i>
-
-                </a>
-
-            </div>
-
-
-            <div class="hero-stats">
-
-
-                <div class="hero-stat">
-
-                    <strong>
-                        01
-                    </strong>
-
-                    <span>
-                        STRENGTH
-                    </span>
-
-                </div>
-
-
-                <div class="hero-stat">
-
-                    <strong>
-                        02
-                    </strong>
-
-                    <span>
-                        DISCIPLINE
-                    </span>
-
-                </div>
-
-
-                <div class="hero-stat">
-
-                    <strong>
-                        03
-                    </strong>
-
-                    <span>
-                        PROGRESS
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- FLOATING BADGES -->
-
-    <div class="floating-badge badge-left">
-
-        <i class="fa-solid fa-dumbbell"></i>
-
-        <span>
-            STRENGTH
-        </span>
-
-    </div>
-
-
-    <div class="floating-badge badge-right">
-
-        <i class="fa-solid fa-bolt"></i>
-
-        <span>
-            PERFORMANCE
-        </span>
-
-    </div>
-
-
-    <div class="hero-scroll">
-
-        <span>
-            SCROLL
-        </span>
-
-        <div class="scroll-line"></div>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     MARQUEE
-===================================================== -->
-
-<section class="marquee">
-
-    <div class="marquee-track">
-
-        <span>
-            ELEVATE YOUR STRENGTH
-        </span>
-
-        <b>✦</b>
-
-        <span>
-            TRAIN WITH PURPOSE
-        </span>
-
-        <b>✦</b>
-
-        <span>
-            BUILD YOUR BEST
-        </span>
-
-        <b>✦</b>
-
-        <span>
-            ELEVATE YOUR STRENGTH
-        </span>
-
-        <b>✦</b>
-
-        <span>
-            TRAIN WITH PURPOSE
-        </span>
-
-        <b>✦</b>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section
-    class="section about"
-    id="about"
->
-
-    <div class="container about-grid">
-
-
-        <div class="about-visual reveal">
-
-            <div class="image-frame">
-
-                <img
-                    src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=85"
-                    alt="ELVYRA workout"
-                >
-
-                <div class="image-shine"></div>
-
-            </div>
-
-
-            <div class="about-card glass-card">
-
-                <span>
-                    THE ELVYRA WAY
-                </span>
-
-                <strong>
-                    TRAIN
-                </strong>
-
-                <small>
-                    CONSISTENTLY.
-                </small>
-
-            </div>
-
-
-            <div class="about-orbit"></div>
-
-        </div>
-
-
-
-        <div class="about-content reveal">
-
-            <div class="section-label">
-                ABOUT ELVYRA
-            </div>
-
-
-            <h2>
-
-                MORE THAN
-
-                <span>A GYM.</span>
-
-            </h2>
-
-
-            <p>
-
-                ELVYRA is built around the idea that becoming
-                stronger is not only about lifting heavier.
-                It is about discipline, consistency and
-                believing that you can improve.
-
-            </p>
-
-
-            <p>
-
-                Whether you are starting from zero or already
-                training regularly, every workout is another
-                step forward.
-
-            </p>
-
-
-            <div class="feature-grid">
-
-
-                <div class="feature-item">
-
-                    <i class="fa-solid fa-dumbbell"></i>
-
-                    <strong>
-                        Strength
-                    </strong>
-
-                    <span>
-                        Build power and confidence.
-                    </span>
-
-                </div>
-
-
-                <div class="feature-item">
-
-                    <i class="fa-solid fa-fire"></i>
-
-                    <strong>
-                        Energy
-                    </strong>
-
-                    <span>
-                        Move better every day.
-                    </span>
-
-                </div>
-
-
-                <div class="feature-item">
-
-                    <i class="fa-solid fa-user-check"></i>
-
-                    <strong>
-                        Guidance
-                    </strong>
-
-                    <span>
-                        Train with better technique.
-                    </span>
-
-                </div>
-
-
-                <div class="feature-item">
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-                    <strong>
-                        Progress
-                    </strong>
-
-                    <span>
-                        Keep improving over time.
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PROGRAMS
-===================================================== -->
-
-<section
-    class="section programs"
-    id="programs"
->
-
-    <div class="container">
-
-
-        <div class="section-heading reveal">
-
-            <div>
-
-                <div class="section-label">
-                    TRAINING
-                </div>
-
-                <h2>
-
-                    DESIGNED FOR
-
-                    <span>PROGRESS.</span>
-
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Choose a training style that matches
-                your goals and experience level.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="program-grid">
-
-
-            <article
-                class="program-card tilt-card reveal"
-            >
-
-                <div class="card-glow"></div>
-
-
-                <span class="program-number">
-                    01
-                </span>
-
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-dumbbell"></i>
-
-                </div>
-
-
-                <h3>
-                    Strength
-                </h3>
-
-
-                <p>
-
-                    Build strength with structured resistance
-                    workouts and better technique.
-
-                </p>
-
-
-                <a href="#contact">
-
-                    EXPLORE
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </article>
-
-
-
-            <article
-                class="program-card tilt-card reveal"
-            >
-
-                <div class="card-glow"></div>
-
-
-                <span class="program-number">
-                    02
-                </span>
-
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-fire"></i>
-
-                </div>
-
-
-                <h3>
-                    Fat Loss
-                </h3>
-
-
-                <p>
-
-                    Build a more active routine and
-                    work towards your fitness goals.
-
-                </p>
-
-
-                <a href="#contact">
-
-                    EXPLORE
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </article>
-
-
-
-            <article
-                class="program-card tilt-card reveal"
-            >
-
-                <div class="card-glow"></div>
-
-
-                <span class="program-number">
-                    03
-                </span>
-
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-person-running"></i>
-
-                </div>
-
-
-                <h3>
-                    Fitness
-                </h3>
-
-
-                <p>
-
-                    Improve stamina, mobility and
-                    everyday physical performance.
-
-                </p>
-
-
-                <a href="#contact">
-
-                    EXPLORE
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </article>
-
-
-
-            <article
-                class="program-card tilt-card reveal"
-            >
-
-                <div class="card-glow"></div>
-
-
-                <span class="program-number">
-                    04
-                </span>
-
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-user"></i>
-
-                </div>
-
-
-                <h3>
-                    Personal Training
-                </h3>
-
-
-                <p>
-
-                    Get more focused guidance around
-                    your individual goals.
-
-                </p>
-
-
-                <a href="#contact">
-
-                    EXPLORE
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     3D EXPERIENCE
-===================================================== -->
-
-<section
-    class="experience"
-    id="experience"
->
-
-    <div class="experience-background">
-
-        <div class="experience-glow glow-one"></div>
-
-        <div class="experience-glow glow-two"></div>
-
-    </div>
-
-
-    <div class="container experience-grid">
-
-
-        <div class="experience-copy reveal">
-
-            <div class="section-label">
-                THE ELVYRA MINDSET
-            </div>
-
-
-            <h2>
-
-                BUILD
-
-                <span>
-                    STRENGTH.
-                </span>
-
-                <br>
-
-                BUILD
-
-                <span>
-                    YOURSELF.
-                </span>
-
-            </h2>
-
-
-            <p>
-
-                The strongest transformation starts long
-                before the final result. It starts when
-                you decide to show up consistently.
-
-            </p>
-
-
-            <div class="experience-points">
-
-
-                <div>
-
-                    <span>
-                        01
-                    </span>
-
-                    <p>
-                        Show up
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        02
-                    </span>
-
-                    <p>
-                        Train smart
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        03
-                    </span>
-
-                    <p>
-                        Keep going
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="advanced-3d reveal">
-
-            <div class="three-label label-top">
-                ELVYRA
-            </div>
-
-            <div class="three-label label-bottom">
-                ELEVATE YOUR STRENGTH.
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     GALLERY
-===================================================== -->
-
-<section
-    class="section gallery"
->
-
-    <div class="container">
-
-
-        <div class="section-heading reveal">
-
-            <div>
-
-                <div class="section-label">
-                    THE EXPERIENCE
-                </div>
-
-                <h2>
-
-                    INSIDE
-
-                    <span>ELVYRA.</span>
-
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Replace these sample visuals with your real
-                gym photographs before publishing.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="gallery-grid">
-
-
-            <div class="gallery-item gallery-large reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1300&q=85"
-                    alt="Gym floor"
-                >
-
-                <div class="gallery-caption">
-
-                    <span>
-                        01
-                    </span>
-
-                    <strong>
-                        TRAINING FLOOR
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-                    alt="Gym equipment"
-                >
-
-                <div class="gallery-caption">
-
-                    <span>
-                        02
-                    </span>
-
-                    <strong>
-                        EQUIPMENT
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="gallery-item reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=85"
-                    alt="Strength training"
-                >
-
-                <div class="gallery-caption">
-
-                    <span>
-                        03
-                    </span>
-
-                    <strong>
-                        TRAINING
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     TRAINERS
-===================================================== -->
-
-<section
-    class="section trainers"
-    id="trainers"
->
-
-    <div class="container">
-
-
-        <div class="section-heading reveal">
-
-            <div>
-
-                <div class="section-label">
-                    COACHING
-                </div>
-
-                <h2>
-
-                    TRAIN WITH
-
-                    <span>CONFIDENCE.</span>
-
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Add your actual trainers and specializations
-                here when your final content is ready.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="trainer-grid">
-
-
-            <article
-                class="trainer-card tilt-card reveal"
-            >
-
-                <div class="trainer-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
-                        alt="Fitness trainer"
-                    >
-
-                </div>
-
-
-                <div class="trainer-overlay">
-
-                    <span>
-                        TRAINER
-                    </span>
-
-                    <h3>
-                        Add Trainer Name
-                    </h3>
-
-                    <p>
-                        Strength & Fitness
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-            <article
-                class="trainer-card tilt-card reveal"
-            >
-
-                <div class="trainer-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=85"
-                        alt="Fitness trainer"
-                    >
-
-                </div>
-
-
-                <div class="trainer-overlay">
-
-                    <span>
-                        TRAINER
-                    </span>
-
-                    <h3>
-                        Add Trainer Name
-                    </h3>
-
-                    <p>
-                        Fitness & Conditioning
-                    </p>
-
-                </div>
-
-            </article>
-
-
-
-            <article
-                class="trainer-card tilt-card reveal"
-            >
-
-                <div class="trainer-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-                        alt="Fitness training"
-                    >
-
-                </div>
-
-
-                <div class="trainer-overlay">
-
-                    <span>
-                        TRAINER
-                    </span>
-
-                    <h3>
-                        Add Trainer Name
-                    </h3>
-
-                    <p>
-                        Functional Training
-                    </p>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MEMBERSHIP
-===================================================== -->
-
-<section
-    class="section membership"
-    id="membership"
->
-
-    <div class="container">
-
-
-        <div class="section-heading centered reveal">
-
-            <div>
-
-                <div class="section-label">
-                    MEMBERSHIP
-                </div>
-
-                <h2>
-
-                    THREE PLANS.
-
-                    <span>ONE GOAL.</span>
-
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Simple membership options so you can choose
-                the commitment that fits your fitness journey.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="membership-grid">
-
-
-            <!-- PLAN 01 -->
-
-            <article
-                class="membership-card tilt-card reveal"
-            >
-
-                <div class="membership-glow"></div>
-
-
-                <div class="plan-number">
-                    01
-                </div>
-
-
-                <span class="plan-label">
-                    START
-                </span>
-
-
-                <h3>
-                    Monthly
-                </h3>
-
-
-                <div class="price">
-
-                    <span>
-                        ₹
-                    </span>
-
-                    <strong>
-                        1,200
-                    </strong>
-
-                    <small>
-                        / month
-                    </small>
-
-                </div>
-
-
-                <p class="plan-description">
-
-                    A flexible option for starting
-                    your fitness routine.
-
-                </p>
-
-
-                <div class="plan-divider"></div>
-
-
-                <ul>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Gym access
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Trainer guidance
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Equipment access
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Basic fitness assessment
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#contact"
-                    class="plan-button"
-                >
-                    GET STARTED
-                </a>
-
-            </article>
-
-
-
-            <!-- PLAN 02 -->
-
-            <article
-                class="membership-card featured tilt-card reveal"
-            >
-
-                <div class="membership-glow"></div>
-
-
-                <div class="popular-label">
-                    MOST POPULAR
-                </div>
-
-
-                <div class="plan-number">
-                    02
-                </div>
-
-
-                <span class="plan-label">
-                    COMMIT
-                </span>
-
-
-                <h3>
-                    6 Months
-                </h3>
-
-
-                <div class="price">
-
-                    <span>
-                        ₹
-                    </span>
-
-                    <strong>
-                        5,000
-                    </strong>
-
-                    <small>
-                        / 6 months
-                    </small>
-
-                </div>
-
-
-                <p class="plan-description">
-
-                    A balanced choice for building
-                    consistency and routine.
-
-                </p>
-
-
-                <div class="plan-divider"></div>
-
-
-                <ul>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Full gym access
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Trainer support
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Progress assessments
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Member benefits
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#contact"
-                    class="plan-button"
-                >
-                    CHOOSE 6 MONTHS
-                </a>
-
-            </article>
-
-
-
-            <!-- PLAN 03 -->
-
-            <article
-                class="membership-card tilt-card reveal"
-            >
-
-                <div class="membership-glow"></div>
-
-
-                <div class="plan-number">
-                    03
-                </div>
-
-
-                <span class="plan-label">
-                    COMMIT
-                </span>
-
-
-                <h3>
-                    Annual
-                </h3>
-
-
-                <div class="price">
-
-                    <span>
-                        ₹
-                    </span>
-
-                    <strong>
-                        8,000
-                    </strong>
-
-                    <small>
-                        / year
-                    </small>
-
-                </div>
-
-
-                <p class="plan-description">
-
-                    For people who want to make
-                    fitness a long-term habit.
-
-                </p>
-
-
-                <div class="plan-divider"></div>
-
-
-                <ul>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Unlimited gym access
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Trainer guidance
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Fitness assessments
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Member benefits
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#contact"
-                    class="plan-button"
-                >
-                    GO ANNUAL
-                </a>
-
-            </article>
-
-        </div>
-
-
-        <p class="membership-note">
-
-            Membership prices and inclusions can be updated
-            according to the final ELVYRA plans.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FINAL CTA
-===================================================== -->
-
-<section
-    class="final-cta"
->
-
-    <div class="final-orb orb-a"></div>
-
-    <div class="final-orb orb-b"></div>
-
-
-    <div class="container final-content reveal">
-
-
-        <div class="section-label">
-            YOUR NEXT LEVEL
-        </div>
-
-
-        <h2>
-
-            DON'T WAIT
-
-            <span>
-                TO BEGIN.
-            </span>
-
-        </h2>
-
-
-        <p>
-
-            One workout can become a habit.
-            One habit can change everything.
-
-        </p>
-
-
-        <a
-            href="#contact"
-            class="btn btn-primary"
-        >
-
-            START WITH ELVYRA
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section
-    class="section contact"
-    id="contact"
->
-
-    <div class="container contact-grid">
-
-
-        <div class="contact-copy reveal">
-
-            <div class="section-label">
-                CONTACT ELVYRA
-            </div>
-
-
-            <h2>
-
-                READY TO
-
-                <span>START?</span>
-
-            </h2>
-
-
-            <p>
-
-                Ask about membership, personal training,
-                programs or a trial session.
-
-            </p>
-
-
-            <div class="contact-mini-cards">
-
-
-                <div>
-
-                    <i class="fa-solid fa-dumbbell"></i>
-
-                    <span>
-                        MEMBERSHIP
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <i class="fa-solid fa-user"></i>
-
-                    <span>
-                        PERSONAL TRAINING
-                    </span>
-
-                </div>
-
-
-                <div>
-
-                    <i class="fa-solid fa-bolt"></i>
-
-                    <span>
-                        FITNESS PROGRAMS
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <form
-            class="contact-form glass-card reveal"
-            id="contactForm"
-        >
-
-            <div class="form-heading">
-
-                <span>
-                    ENQUIRY
-                </span>
-
-                <h3>
-                    LET'S TALK.
-                </h3>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label for="name">
-                    FULL NAME
-                </label>
-
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter your name"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-row">
-
-
-                <div class="input-group">
-
-                    <label for="phone">
-                        PHONE
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="+91 XXXXX XXXXX"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label for="email">
-                        EMAIL
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Your email"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label for="interest">
-                    I'M INTERESTED IN
-                </label>
-
-
-                <select
-                    id="interest"
-                    name="interest"
-                >
-
-                    <option value="">
-                        Select an option
-                    </option>
-
-                    <option>
-                        Monthly Membership
-                    </option>
-
-                    <option>
-                        6 Month Membership
-                    </option>
-
-                    <option>
-                        Annual Membership
-                    </option>
-
-                    <option>
-                        Personal Training
-                    </option>
-
-                    <option>
-                        Free Trial
-                    </option>
-
-                    <option>
-                        General Enquiry
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label for="message">
-                    MESSAGE
-                </label>
-
-                <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Tell us what you would like to know..."
-                ></textarea>
-
-            </div>
-
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#programs" class="nav-link">Programs</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#trainers" class="nav-link">Trainers</a>
+                <a href="#membership" class="nav-link">Membership</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <a href="#membership" class="nav-cta">
+                Join Now
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
             <button
-                type="submit"
-                class="btn btn-primary submit-button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation"
+                type="button"
             >
-
-                SEND ENQUIRY
-
-                <i class="fa-solid fa-paper-plane"></i>
-
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
-
-            <p class="form-note">
-
-                This form currently uses the existing
-                frontend behavior. Backend integration
-                can be added without changing this design.
-
-            </p>
-
-        </form>
-
-    </div>
-
-</section>
+        </div>
+    </header>
 
 
+    <main>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+        <!-- =========================
+             HERO
+        ========================== -->
+        <section class="hero section" id="home">
 
-<footer class="footer">
+            <div class="hero-grid"></div>
+            <div class="hero-glow glow-one"></div>
+            <div class="hero-glow glow-two"></div>
 
-    <div class="container">
+            <div class="container hero-container">
+
+                <div class="hero-content reveal">
+
+                    <div class="eyebrow">
+                        <span></span>
+                        PREMIUM FITNESS EXPERIENCE
+                    </div>
+
+                    <h1>
+                        BUILD YOUR
+                        <span>STRONGER</span>
+                        SELF.
+                    </h1>
+
+                    <p class="hero-description">
+                        Train harder. Move smarter. Become stronger.
+                        ELVYRA is built for people who refuse to stay average.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#membership" class="btn btn-primary">
+                            Start Your Journey
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        <a href="#programs" class="btn btn-outline">
+                            Explore Programs
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div>
+                            <strong>03</strong>
+                            <span>Membership Plans</span>
+                        </div>
+
+                        <div>
+                            <strong>24/7</strong>
+                            <span>Fitness Mindset</span>
+                        </div>
+
+                        <div>
+                            <strong>01</strong>
+                            <span>Goal — Your Growth</span>
+                        </div>
+                    </div>
+
+                </div>
 
 
-        <div class="footer-main">
+                <!-- 3D CANVAS -->
+                <div class="hero-visual reveal-right">
+                    <div class="hero-visual-frame">
+
+                        <div class="visual-label visual-label-top">
+                            <span class="live-dot"></span>
+                            PERFORMANCE MODE
+                        </div>
+
+                        <canvas id="threeCanvas"></canvas>
+
+                        <div class="orbit orbit-one"></div>
+                        <div class="orbit orbit-two"></div>
+
+                        <div class="floating-card card-a">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <div>
+                                <strong>POWER</strong>
+                                <span>Every Rep Counts</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-card card-b">
+                            <i class="fa-solid fa-bolt"></i>
+                            <div>
+                                <strong>ENERGY</strong>
+                                <span>Push Beyond Limits</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="scroll-indicator">
+                <span>SCROLL TO EXPLORE</span>
+                <i class="fa-solid fa-arrow-down"></i>
+            </div>
+
+        </section>
 
 
-            <div class="footer-brand">
-
-                <a
-                    href="#home"
-                    class="logo"
-                >
-
-                    ELV<span>YRA</span>
-
-                </a>
-
-
-                <p>
-                    Elevate Your Strength.
-                </p>
-
-
-                <div class="social-links">
-
-
-                    <a
-                        href="#"
-                        aria-label="Instagram"
-                    >
-
-                        <i class="fa-brands fa-instagram"></i>
-
-                    </a>
+        <!-- =========================
+             MARQUEE
+        ========================== -->
+        <div class="marquee">
+            <div class="marquee-track">
+                <span>STRENGTH</span>
+                <i>✦</i>
+                <span>DISCIPLINE</span>
+                <i>✦</i>
+                <span>POWER</span>
+                <i>✦</i>
+                <span>CONSISTENCY</span>
+                <i>✦</i>
+                <span>STRENGTH</span>
+                <i>✦</i>
+                <span>DISCIPLINE</span>
+                <i>✦</i>
+                <span>POWER</span>
+                <i>✦</i>
+                <span>CONSISTENCY</span>
+                <i>✦</i>
+            </div>
+        </div>
 
 
-                    <a
-                        href="#"
-                        aria-label="Facebook"
-                    >
+        <!-- =========================
+             ABOUT
+        ========================== -->
+        <section class="section about-section" id="about">
 
-                        <i class="fa-brands fa-facebook-f"></i>
+            <div class="container">
 
-                    </a>
+                <div class="section-heading reveal">
+                    <div class="eyebrow">
+                        <span></span>
+                        WHY ELVYRA
+                    </div>
+
+                    <h2>
+                        MORE THAN A
+                        <span>GYM.</span>
+                    </h2>
+
+                    <p>
+                        A focused environment where strength, discipline and
+                        consistency come together.
+                    </p>
+                </div>
 
 
-                    <a
-                        href="#"
-                        aria-label="YouTube"
-                    >
+                <div class="about-grid">
 
-                        <i class="fa-brands fa-youtube"></i>
+                    <div class="about-card about-main-card reveal">
 
-                    </a>
+                        <div class="card-number">01</div>
+
+                        <i class="fa-solid fa-fire-flame-curved feature-icon"></i>
+
+                        <h3>Train With Purpose</h3>
+
+                        <p>
+                            Every workout is an opportunity to become a
+                            stronger version of yourself.
+                        </p>
+
+                        <span class="card-line"></span>
+
+                    </div>
+
+
+                    <div class="about-card reveal">
+
+                        <div class="card-number">02</div>
+
+                        <i class="fa-solid fa-bullseye feature-icon"></i>
+
+                        <h3>Focused Goals</h3>
+
+                        <p>
+                            Build a routine around goals that actually
+                            matter to you.
+                        </p>
+
+                        <span class="card-line"></span>
+
+                    </div>
+
+
+                    <div class="about-card reveal">
+
+                        <div class="card-number">03</div>
+
+                        <i class="fa-solid fa-people-group feature-icon"></i>
+
+                        <h3>Strong Community</h3>
+
+                        <p>
+                            Surround yourself with people who are serious
+                            about growth.
+                        </p>
+
+                        <span class="card-line"></span>
+
+                    </div>
 
                 </div>
 
             </div>
 
+        </section>
 
 
-            <div class="footer-column">
+        <!-- =========================
+             PROGRAMS
+        ========================== -->
+        <section class="section programs-section" id="programs">
 
-                <h4>
-                    EXPLORE
-                </h4>
+            <div class="container">
 
-                <a href="#about">
-                    About
-                </a>
+                <div class="section-heading split-heading reveal">
+                    <div>
+                        <div class="eyebrow">
+                            <span></span>
+                            TRAINING PROGRAMS
+                        </div>
 
-                <a href="#programs">
-                    Programs
-                </a>
+                        <h2>
+                            TRAIN
+                            <span>YOUR WAY.</span>
+                        </h2>
+                    </div>
 
-                <a href="#experience">
-                    Experience
-                </a>
+                    <p>
+                        Choose the training approach that matches your
+                        current goal and fitness journey.
+                    </p>
+                </div>
 
-                <a href="#trainers">
-                    Trainers
+
+                <div class="programs-grid">
+
+                    <article class="program-card tilt-card reveal">
+                        <div class="program-image image-one">
+                            <div class="program-number">01</div>
+                        </div>
+
+                        <div class="program-content">
+                            <span>STRENGTH</span>
+                            <h3>Strength Training</h3>
+                            <p>
+                                Improve power, stability and overall strength
+                                with structured resistance training.
+                            </p>
+
+                            <a href="#contact">
+                                Enquire Now
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+
+                    <article class="program-card tilt-card reveal">
+                        <div class="program-image image-two">
+                            <div class="program-number">02</div>
+                        </div>
+
+                        <div class="program-content">
+                            <span>CONDITIONING</span>
+                            <h3>Fat Loss & Fitness</h3>
+                            <p>
+                                Build endurance and fitness with high-energy
+                                workouts designed around consistency.
+                            </p>
+
+                            <a href="#contact">
+                                Enquire Now
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+
+                    <article class="program-card tilt-card reveal">
+                        <div class="program-image image-three">
+                            <div class="program-number">03</div>
+                        </div>
+
+                        <div class="program-content">
+                            <span>PERFORMANCE</span>
+                            <h3>Personal Training</h3>
+                            <p>
+                                Get focused guidance, workout structure and
+                                accountability for your individual goals.
+                            </p>
+
+                            <a href="#contact">
+                                Enquire Now
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXPERIENCE
+        ========================== -->
+        <section class="section experience-section">
+
+            <div class="container experience-grid">
+
+                <div class="experience-copy reveal">
+
+                    <div class="eyebrow">
+                        <span></span>
+                        THE ELVYRA EXPERIENCE
+                    </div>
+
+                    <h2>
+                        DESIGNED TO
+                        <span>MOVE YOU.</span>
+                    </h2>
+
+                    <p>
+                        From the first rep to the final set, every detail
+                        is designed around an intense and focused training
+                        experience.
+                    </p>
+
+                    <div class="experience-points">
+
+                        <div class="experience-point">
+                            <div class="point-icon">
+                                <i class="fa-solid fa-dumbbell"></i>
+                            </div>
+
+                            <div>
+                                <h3>Modern Training</h3>
+                                <p>Train with confidence and consistency.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="experience-point">
+                            <div class="point-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+
+                            <div>
+                                <h3>Progress Mindset</h3>
+                                <p>Focus on progress, not perfection.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="experience-point">
+                            <div class="point-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+
+                            <div>
+                                <h3>Better Every Day</h3>
+                                <p>Build habits that last beyond the gym.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="experience-visual reveal-right">
+
+                    <div class="experience-box">
+
+                        <div class="experience-ring ring-one"></div>
+                        <div class="experience-ring ring-two"></div>
+                        <div class="experience-ring ring-three"></div>
+
+                        <div class="experience-center">
+                            <span>ELVYRA</span>
+                            <strong>E</strong>
+                            <small>EST. FOR STRENGTH</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GALLERY
+        ========================== -->
+        <section class="section gallery-section" id="gallery">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <div class="eyebrow">
+                        <span></span>
+                        GALLERY
+                    </div>
+
+                    <h2>
+                        BUILT FOR
+                        <span>INTENSITY.</span>
+                    </h2>
+                </div>
+
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-item gallery-large reveal">
+                        <div class="gallery-overlay">
+                            <span>01</span>
+                            <h3>TRAIN HARD</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item gallery-two reveal">
+                        <div class="gallery-overlay">
+                            <span>02</span>
+                            <h3>STAY FOCUSED</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item gallery-three reveal">
+                        <div class="gallery-overlay">
+                            <span>03</span>
+                            <h3>KEEP MOVING</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item gallery-four reveal">
+                        <div class="gallery-overlay">
+                            <span>04</span>
+                            <h3>GET STRONGER</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TRAINERS
+        ========================== -->
+        <section class="section trainers-section" id="trainers">
+
+            <div class="container">
+
+                <div class="section-heading split-heading reveal">
+                    <div>
+                        <div class="eyebrow">
+                            <span></span>
+                            TRAINING TEAM
+                        </div>
+
+                        <h2>
+                            GUIDANCE.
+                            <span>FOCUS.</span>
+                        </h2>
+                    </div>
+
+                    <p>
+                        Build better training habits with experienced
+                        guidance and a clear focus on your goals.
+                    </p>
+                </div>
+
+
+                <div class="trainers-grid">
+
+                    <div class="trainer-card tilt-card reveal">
+                        <div class="trainer-image trainer-one"></div>
+
+                        <div class="trainer-info">
+                            <span>STRENGTH COACH</span>
+                            <h3>Performance Coach</h3>
+
+                            <div class="trainer-socials">
+                                <a href="#" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+
+                                <a href="#" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="trainer-card tilt-card reveal">
+                        <div class="trainer-image trainer-two"></div>
+
+                        <div class="trainer-info">
+                            <span>FITNESS COACH</span>
+                            <h3>Conditioning Coach</h3>
+
+                            <div class="trainer-socials">
+                                <a href="#" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+
+                                <a href="#" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="trainer-card tilt-card reveal">
+                        <div class="trainer-image trainer-three"></div>
+
+                        <div class="trainer-info">
+                            <span>PERSONAL TRAINER</span>
+                            <h3>Personal Training Coach</h3>
+
+                            <div class="trainer-socials">
+                                <a href="#" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+
+                                <a href="#" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MEMBERSHIP
+        ========================== -->
+        <section class="section membership-section" id="membership">
+
+            <div class="container">
+
+                <div class="section-heading center-heading reveal">
+
+                    <div class="eyebrow">
+                        <span></span>
+                        MEMBERSHIP
+                    </div>
+
+                    <h2>
+                        CHOOSE YOUR
+                        <span>LEVEL.</span>
+                    </h2>
+
+                    <p>
+                        Simple plans. Clear value. No unnecessary complexity.
+                    </p>
+
+                </div>
+
+
+                <div class="membership-grid">
+
+                    <!-- MONTHLY -->
+                    <article class="membership-card reveal">
+
+                        <div class="membership-top">
+                            <span>01</span>
+                            <h3>Monthly</h3>
+                        </div>
+
+                        <div class="price">
+                            <sup>₹</sup>1,200
+                            <span>/ month</span>
+                        </div>
+
+                        <div class="membership-line"></div>
+
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Gym access
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                General training area
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Flexible routine
+                            </li>
+                        </ul>
+
+                        <a href="#contact" class="membership-btn">
+                            Enquire Now
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- 6 MONTHS -->
+                    <article class="membership-card featured reveal">
+
+                        <div class="popular-badge">
+                            MOST POPULAR
+                        </div>
+
+                        <div class="membership-top">
+                            <span>02</span>
+                            <h3>6 Months</h3>
+                        </div>
+
+                        <div class="price">
+                            <sup>₹</sup>5,000
+                            <span>/ 6 months</span>
+                        </div>
+
+                        <div class="membership-line"></div>
+
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Gym access
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                General training area
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Consistent training routine
+                            </li>
+                        </ul>
+
+                        <a href="#contact" class="membership-btn">
+                            Enquire Now
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+
+                    <!-- ANNUAL -->
+                    <article class="membership-card reveal">
+
+                        <div class="membership-top">
+                            <span>03</span>
+                            <h3>Annual</h3>
+                        </div>
+
+                        <div class="price">
+                            <sup>₹</sup>8,000
+                            <span>/ year</span>
+                        </div>
+
+                        <div class="membership-line"></div>
+
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Gym access
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Full training area
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Long-term fitness routine
+                            </li>
+                        </ul>
+
+                        <a href="#contact" class="membership-btn">
+                            Enquire Now
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+                </div>
+
+                <p class="price-note">
+                    * Replace these design prices with ELVYRA's official prices before publishing.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+        <section class="cta-section">
+
+            <div class="cta-glow"></div>
+
+            <div class="container cta-content reveal">
+
+                <div class="eyebrow">
+                    <span></span>
+                    YOUR NEXT REP STARTS HERE
+                </div>
+
+                <h2>
+                    READY TO
+                    <span>LEVEL UP?</span>
+                </h2>
+
+                <p>
+                    Tell us what you're looking for and the ELVYRA team can
+                    help you take the next step.
+                </p>
+
+                <a href="#contact" class="btn btn-primary">
+                    Start Your Enquiry
+                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
 
             </div>
 
+        </section>
 
 
-            <div class="footer-column">
+        <!-- =========================
+             CONTACT
+        ========================== -->
+        <section class="section contact-section" id="contact">
 
-                <h4>
-                    MEMBERSHIP
-                </h4>
+            <div class="container contact-grid">
 
-                <a href="#membership">
-                    Monthly • ₹1,200
-                </a>
+                <div class="contact-info reveal">
 
-                <a href="#membership">
-                    6 Months • ₹5,000
-                </a>
+                    <div class="eyebrow">
+                        <span></span>
+                        CONTACT ELVYRA
+                    </div>
 
-                <a href="#membership">
-                    Annual • ₹8,000
-                </a>
+                    <h2>
+                        LET'S TALK
+                        <span>FITNESS.</span>
+                    </h2>
+
+                    <p>
+                        Have a question about membership, training or
+                        getting started? Send us an enquiry.
+                    </p>
+
+                    <div class="contact-items">
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+
+                            <div>
+                                <span>PHONE</span>
+                                <strong>Contact ELVYRA</strong>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+
+                            <div>
+                                <span>EMAIL</span>
+                                <strong>hello@elvyra.com</strong>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+
+                            <div>
+                                <span>RESPONSE</span>
+                                <strong>We'll get back to you</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT FORM -->
+                <div class="contact-form-wrap reveal-right">
+
+                    <form id="contactForm" class="contact-form">
+
+                        <div class="form-heading">
+                            <span>ENQUIRY FORM</span>
+                            <h3>Start a Conversation</h3>
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Enter your phone"
+                                    required
+                                >
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="interest">Interested In</label>
+
+                            <select id="interest" name="interest">
+                                <option value="">Select an option</option>
+                                <option value="Monthly Membership">
+                                    Monthly Membership
+                                </option>
+                                <option value="6 Months Membership">
+                                    6 Months Membership
+                                </option>
+                                <option value="Annual Membership">
+                                    Annual Membership
+                                </option>
+                                <option value="Strength Training">
+                                    Strength Training
+                                </option>
+                                <option value="Fat Loss & Fitness">
+                                    Fat Loss & Fitness
+                                </option>
+                                <option value="Personal Training">
+                                    Personal Training
+                                </option>
+                                <option value="General Enquiry">
+                                    General Enquiry
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                placeholder="Tell us what you're looking for..."
+                            ></textarea>
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                            id="submitBtn"
+                        >
+                            <span id="submitText">Send Enquiry</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+
+                        <div
+                            class="form-status"
+                            id="formStatus"
+                            aria-live="polite"
+                        ></div>
+
+                    </form>
+
+                </div>
 
             </div>
 
+        </section>
+
+    </main>
 
 
-            <div class="footer-column">
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
 
-                <h4>
-                    START
-                </h4>
+        <div class="container footer-top">
 
-                <a href="#membership">
-                    View Plans
+            <a href="#home" class="brand">
+                <span class="brand-mark">E</span>
+
+                <span class="brand-text">
+                    <strong>ELVYRA</strong>
+                    <small>ELEVATE YOUR STRENGTH</small>
+                </span>
+            </a>
+
+
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#programs">Programs</a>
+                <a href="#membership">Membership</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
                 </a>
 
-                <a href="#contact">
-                    Make an Enquiry
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
                 </a>
 
-                <a href="#contact">
-                    Personal Training
+                <a href="#" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
                 </a>
-
             </div>
 
         </div>
 
 
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 ELVYRA. All Rights Reserved.
-            </p>
-
-
-            <p>
-                Elevate Your Strength.
-            </p>
-
+        <div class="container footer-bottom">
+            <p>© 2026 ELVYRA. All rights reserved.</p>
+            <p>Elevate Your Strength.</p>
         </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 
-
-<!-- =====================================================
-     BACK TO TOP
-===================================================== -->
-
-<button
-    class="back-to-top"
-    id="backToTop"
-    aria-label="Back to top"
->
-
-    <i class="fa-solid fa-arrow-up"></i>
-
-</button>
+    <!-- =========================
+         BACK TO TOP
+    ========================== -->
+    <button
+        class="back-top"
+        id="backTop"
+        aria-label="Back to top"
+        type="button"
+    >
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
 
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
 
-<!-- =====================================================
-     SCRIPT
-===================================================== -->
-
-<script src="script.js"></script>
+    <!-- Your JS -->
+    <script src="script.js"></script>
 
 </body>
-
 </html>

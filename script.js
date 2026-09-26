@@ -1,454 +1,453 @@
-/* =====================================================
+/* =========================================================
+   ELVYRA FRONTEND JAVASCRIPT
+   Backend connection:
+   http://localhost:5000/api/enquiries
+========================================================= */
+
+
+/* =========================================================
+   CONFIGURATION
+========================================================= */
+
+// IMPORTANT:
+// This is your friend's current backend address.
+//
+// Local development:
+// http://localhost:5000
+//
+// Later, when your friend deploys the backend,
+// change this to the real backend URL.
+const API_BASE_URL = "http://localhost:5000";
+
+
+/* =========================================================
    PAGE LOADER
-===================================================== */
+========================================================= */
 
 window.addEventListener("load", () => {
 
-    const loader =
-        document.getElementById("pageLoader");
+    const loader = document.getElementById("pageLoader");
 
     setTimeout(() => {
-
-        loader.classList.add("hidden");
-
+        if (loader) {
+            loader.classList.add("hidden");
+        }
     }, 500);
 
 });
 
 
-/* =====================================================
+/* =========================================================
    NAVBAR
-===================================================== */
+========================================================= */
 
-const navbar =
-    document.getElementById("navbar");
-
+const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
 
+    if (!navbar) return;
+
     if (window.scrollY > 50) {
-
         navbar.classList.add("scrolled");
-
     } else {
-
         navbar.classList.remove("scrolled");
-
     }
 
 });
 
 
-/* =====================================================
+/* =========================================================
    MOBILE MENU
-===================================================== */
+========================================================= */
 
-const menuToggle =
-    document.getElementById("menuToggle");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-const navMenu =
-    document.getElementById("navMenu");
+if (menuToggle && navLinks) {
 
+    menuToggle.addEventListener("click", () => {
 
-menuToggle.addEventListener(
-    "click",
-    () => {
+        navLinks.classList.toggle("mobile-open");
 
-        navMenu.classList.toggle("show");
-
-    }
-);
-
-
-document
-    .querySelectorAll(".nav-menu a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                navMenu.classList.remove("show");
-
-            }
-        );
+        document.body.classList.toggle("menu-open");
 
     });
 
 
-/* =====================================================
-   ACTIVE NAVIGATION
-===================================================== */
+    const mobileLinks = navLinks.querySelectorAll(".nav-link");
 
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
+    mobileLinks.forEach(link => {
 
-const navLinks =
-    document.querySelectorAll(
-        ".nav-menu a"
-    );
+        link.addEventListener("click", () => {
 
+            navLinks.classList.remove("mobile-open");
 
-window.addEventListener(
-    "scroll",
-    () => {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const top =
-                section.offsetTop - 180;
-
-            const height =
-                section.offsetHeight;
-
-
-            if (
-                window.scrollY >= top &&
-                window.scrollY <
-                top + height
-            ) {
-
-                current =
-                    section.getAttribute(
-                        "id"
-                    );
-
-            }
+            document.body.classList.remove("menu-open");
 
         });
 
-
-        navLinks.forEach(link => {
-
-            link.classList.remove(
-                "active"
-            );
-
-
-            if (
-                link.getAttribute("href") ===
-                "#" + current
-            ) {
-
-                link.classList.add(
-                    "active"
-                );
-
-            }
-
-        });
-
-    }
-);
-
-
-/* =====================================================
-   CUSTOM CURSOR
-===================================================== */
-
-const cursorDot =
-    document.querySelector(".cursor-dot");
-
-const cursorRing =
-    document.querySelector(".cursor-ring");
-
-
-let cursorX = 0;
-let cursorY = 0;
-
-let ringX = 0;
-let ringY = 0;
-
-
-window.addEventListener(
-    "mousemove",
-    event => {
-
-        cursorX =
-            event.clientX;
-
-        cursorY =
-            event.clientY;
-
-
-        cursorDot.style.left =
-            cursorX + "px";
-
-        cursorDot.style.top =
-            cursorY + "px";
-
-    }
-);
-
-
-function animateCursor() {
-
-    ringX +=
-        (cursorX - ringX) * .12;
-
-    ringY +=
-        (cursorY - ringY) * .12;
-
-
-    cursorRing.style.left =
-        ringX + "px";
-
-    cursorRing.style.top =
-        ringY + "px";
-
-
-    requestAnimationFrame(
-        animateCursor
-    );
+    });
 
 }
 
 
-animateCursor();
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const navItems = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("main section[id]");
+
+function updateActiveNav() {
+
+    let currentSection = "home";
+
+    sections.forEach(section => {
+
+        const sectionTop = section.offsetTop - 160;
+        const sectionBottom =
+            sectionTop + section.offsetHeight;
+
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionBottom
+        ) {
+            currentSection = section.id;
+        }
+
+    });
+
+    navItems.forEach(item => {
+
+        item.classList.remove("active");
+
+        const target = item.getAttribute("href");
+
+        if (target === `#${currentSection}`) {
+            item.classList.add("active");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", updateActiveNav);
+
+updateActiveNav();
 
 
-document
-    .querySelectorAll("a, button, .tilt-card")
-    .forEach(element => {
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
 
-        element.addEventListener(
-            "mouseenter",
-            () => {
+const cursorDot = document.getElementById("cursorDot");
+const cursorRing = document.getElementById("cursorRing");
 
-                cursorRing.style.width =
-                    "55px";
+if (
+    cursorDot &&
+    cursorRing &&
+    window.matchMedia("(pointer: fine)").matches
+) {
 
-                cursorRing.style.height =
-                    "55px";
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
 
-                cursorRing.style.borderColor =
-                    "rgba(182,156,255,.75)";
-
-            }
-        );
+    let ringX = mouseX;
+    let ringY = mouseY;
 
 
-        element.addEventListener(
-            "mouseleave",
-            () => {
+    window.addEventListener("mousemove", event => {
 
-                cursorRing.style.width =
-                    "35px";
+        mouseX = event.clientX;
+        mouseY = event.clientY;
 
-                cursorRing.style.height =
-                    "35px";
-
-                cursorRing.style.borderColor =
-                    "rgba(182,156,255,.45)";
-
-            }
-        );
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
 
     });
 
 
-/* =====================================================
-   THREE.JS 3D HERO
-===================================================== */
+    function animateCursor() {
 
-const canvas =
-    document.getElementById(
-        "heroCanvas"
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+
+        cursorRing.style.left = `${ringX}px`;
+        cursorRing.style.top = `${ringY}px`;
+
+        requestAnimationFrame(animateCursor);
+
+    }
+
+    animateCursor();
+
+
+    const interactiveElements =
+        document.querySelectorAll(
+            "a, button, input, textarea, select, .tilt-card"
+        );
+
+
+    interactiveElements.forEach(element => {
+
+        element.addEventListener("mouseenter", () => {
+            document.body.classList.add("cursor-hover");
+        });
+
+        element.addEventListener("mouseleave", () => {
+            document.body.classList.remove("cursor-hover");
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   THREE.JS 3D HERO
+========================================================= */
+
+function initThreeScene() {
+
+    const canvas = document.getElementById("threeCanvas");
+
+    if (!canvas || typeof THREE === "undefined") {
+        return;
+    }
+
+
+    const container = canvas.parentElement;
+
+
+    const scene = new THREE.Scene();
+
+    scene.fog = new THREE.FogExp2(
+        0x070708,
+        0.035
     );
 
 
-if (
-    canvas &&
-    typeof THREE !== "undefined"
-) {
-
-
-    const scene =
-        new THREE.Scene();
-
-
-    const camera =
-        new THREE.PerspectiveCamera(
-            38,
-            window.innerWidth /
-                window.innerHeight,
-            .1,
-            100
-        );
-
+    const camera = new THREE.PerspectiveCamera(
+        45,
+        container.clientWidth / container.clientHeight,
+        0.1,
+        100
+    );
 
     camera.position.set(
         0,
-        .2,
-        8
+        0,
+        9
     );
 
 
-    const renderer =
-        new THREE.WebGLRenderer({
+    const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true
+    });
 
-            canvas: canvas,
+    renderer.setPixelRatio(
+        Math.min(window.devicePixelRatio, 2)
+    );
 
-            alpha: true,
+    renderer.setSize(
+        container.clientWidth,
+        container.clientHeight
+    );
 
-            antialias: true,
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-            powerPreference:
-                "high-performance"
 
+    /* =========================
+       LIGHTS
+    ========================== */
+
+    const ambientLight = new THREE.AmbientLight(
+        0xffffff,
+        0.65
+    );
+
+    scene.add(ambientLight);
+
+
+    const purpleLight = new THREE.PointLight(
+        0x8b5cf6,
+        25,
+        20
+    );
+
+    purpleLight.position.set(
+        4,
+        2,
+        5
+    );
+
+    scene.add(purpleLight);
+
+
+    const pinkLight = new THREE.PointLight(
+        0xec4899,
+        16,
+        15
+    );
+
+    pinkLight.position.set(
+        -4,
+        -2,
+        3
+    );
+
+    scene.add(pinkLight);
+
+
+    /* =========================
+       DUMBBELL GROUP
+    ========================== */
+
+    const dumbbell = new THREE.Group();
+
+    scene.add(dumbbell);
+
+
+    /* =========================
+       MATERIALS
+    ========================== */
+
+    const metalMaterial =
+        new THREE.MeshStandardMaterial({
+            color: 0x19191e,
+            metalness: 0.9,
+            roughness: 0.2
         });
 
 
-    renderer.setPixelRatio(
-        Math.min(
-            window.devicePixelRatio,
-            1.8
-        )
-    );
+    const darkMaterial =
+        new THREE.MeshStandardMaterial({
+            color: 0x08080b,
+            metalness: 0.75,
+            roughness: 0.28
+        });
 
 
-    renderer.setSize(
-        window.innerWidth,
-        window.innerHeight
-    );
+    const purpleMaterial =
+        new THREE.MeshStandardMaterial({
+            color: 0x8b5cf6,
+            metalness: 0.65,
+            roughness: 0.22,
+            emissive: 0x2b0c5f,
+            emissiveIntensity: 0.3
+        });
 
 
-    /* -------------------------------------------------
-       GROUP
-    ------------------------------------------------- */
-
-    const gymObject =
-        new THREE.Group();
-
-
-    gymObject.position.x =
-        2.35;
-
-    gymObject.position.y =
-        .1;
+    const pinkMaterial =
+        new THREE.MeshStandardMaterial({
+            color: 0xec4899,
+            metalness: 0.65,
+            roughness: 0.22,
+            emissive: 0x4a0a28,
+            emissiveIntensity: 0.3
+        });
 
 
-    scene.add(
-        gymObject
-    );
+    /* =========================
+       HANDLE
+    ========================== */
 
-
-    /* -------------------------------------------------
-       DUMBBELL BAR
-    ------------------------------------------------- */
-
-    const barGeometry =
+    const handleGeometry =
         new THREE.CylinderGeometry(
-            .055,
-            .055,
-            3.6,
+            0.18,
+            0.18,
+            3.7,
             32
         );
 
-
-    const metalMaterial =
-        new THREE.MeshPhysicalMaterial({
-
-            color: 0xc8c5cc,
-
-            metalness: .92,
-
-            roughness: .18,
-
-            clearcoat: 1
-
-        });
-
-
-    const bar =
+    const handle =
         new THREE.Mesh(
-            barGeometry,
+            handleGeometry,
             metalMaterial
         );
 
+    handle.rotation.z = Math.PI / 2;
 
-    bar.rotation.z =
-        Math.PI / 2;
-
-
-    gymObject.add(
-        bar
-    );
+    dumbbell.add(handle);
 
 
-    /* -------------------------------------------------
-       DUMBBELL PLATES
-    ------------------------------------------------- */
-
-    const plateMaterial =
-        new THREE.MeshPhysicalMaterial({
-
-            color: 0x17141f,
-
-            metalness: .80,
-
-            roughness: .22,
-
-            clearcoat: 1,
-
-            clearcoatRoughness: .15
-
-        });
-
-
-    const glowMaterial =
-        new THREE.MeshPhysicalMaterial({
-
-            color: 0x8b5cf6,
-
-            emissive: 0x5b21b6,
-
-            emissiveIntensity: 1.4,
-
-            metalness: .35,
-
-            roughness: .20
-
-        });
-
+    /* =========================
+       PLATE FUNCTION
+    ========================== */
 
     function createPlate(
+        x,
         radius,
-        thickness,
-        y
+        depth,
+        material
     ) {
 
         const geometry =
             new THREE.CylinderGeometry(
                 radius,
                 radius,
-                thickness,
+                depth,
                 64
             );
-
 
         const plate =
             new THREE.Mesh(
                 geometry,
-                plateMaterial
+                material
             );
-
 
         plate.rotation.z =
             Math.PI / 2;
 
+        plate.position.x = x;
 
-        plate.position.x =
-            y;
+        dumbbell.add(plate);
 
 
-        gymObject.add(
-            plate
-        );
+        const ringGeometry =
+            new THREE.TorusGeometry(
+                radius * 0.73,
+                0.045,
+                18,
+                64
+            );
+
+        const ring =
+            new THREE.Mesh(
+                ringGeometry,
+                pinkMaterial
+            );
+
+        ring.rotation.y =
+            Math.PI / 2;
+
+        ring.position.x = x;
+
+        dumbbell.add(ring);
+
+
+        const centreGeometry =
+            new THREE.CylinderGeometry(
+                radius * 0.28,
+                radius * 0.28,
+                depth + 0.04,
+                32
+            );
+
+        const centre =
+            new THREE.Mesh(
+                centreGeometry,
+                darkMaterial
+            );
+
+        centre.rotation.z =
+            Math.PI / 2;
+
+        centre.position.x = x;
+
+        dumbbell.add(centre);
 
 
         return plate;
@@ -456,259 +455,127 @@ if (
     }
 
 
-    function createGlowPlate(
-        radius,
-        thickness,
-        x
-    ) {
+    /* LEFT SIDE */
+    createPlate(
+        -2.05,
+        0.85,
+        0.26,
+        purpleMaterial
+    );
+
+    createPlate(
+        -1.62,
+        0.58,
+        0.23,
+        darkMaterial
+    );
+
+
+    /* RIGHT SIDE */
+    createPlate(
+        2.05,
+        0.85,
+        0.26,
+        pinkMaterial
+    );
+
+    createPlate(
+        1.62,
+        0.58,
+        0.23,
+        darkMaterial
+    );
+
+
+    /* =========================
+       COLLARS
+    ========================== */
+
+    function createCollar(x) {
 
         const geometry =
             new THREE.CylinderGeometry(
-                radius,
-                radius,
-                thickness,
-                64
+                0.29,
+                0.29,
+                0.18,
+                32
             );
 
-
-        const plate =
+        const collar =
             new THREE.Mesh(
                 geometry,
-                glowMaterial
+                metalMaterial
             );
 
-
-        plate.rotation.z =
+        collar.rotation.z =
             Math.PI / 2;
 
+        collar.position.x = x;
 
-        plate.position.x =
-            x;
-
-
-        gymObject.add(
-            plate
-        );
+        dumbbell.add(collar);
 
     }
 
-
-    createPlate(
-        .58,
-        .20,
-        -1.58
-    );
-
-    createPlate(
-        .45,
-        .22,
-        -1.28
-    );
-
-    createGlowPlate(
-        .22,
-        .25,
-        -1.03
-    );
+    createCollar(-1.25);
+    createCollar(1.25);
 
 
-    createPlate(
-        .58,
-        .20,
-        1.58
-    );
+    /* =========================
+       LOGO RINGS
+    ========================== */
 
-    createPlate(
-        .45,
-        .22,
-        1.28
-    );
+    const ringGroup = new THREE.Group();
 
-    createGlowPlate(
-        .22,
-        .25,
-        1.03
-    );
+    scene.add(ringGroup);
 
 
-    /* -------------------------------------------------
-       HANDLE RINGS
-    ------------------------------------------------- */
+    for (let i = 0; i < 4; i++) {
 
-    const torusGeometry =
-        new THREE.TorusGeometry(
-            .23,
-            .035,
-            16,
-            64
-        );
-
-
-    const torusMaterial =
-        new THREE.MeshBasicMaterial({
-
-            color: 0xb69cff,
-
-            transparent: true,
-
-            opacity: .85
-
-        });
-
-
-    const torusLeft =
-        new THREE.Mesh(
-            torusGeometry,
-            torusMaterial
-        );
-
-
-    torusLeft.rotation.y =
-        Math.PI / 2;
-
-    torusLeft.position.x =
-        -1.04;
-
-
-    gymObject.add(
-        torusLeft
-    );
-
-
-    const torusRight =
-        torusLeft.clone();
-
-
-    torusRight.position.x =
-        1.04;
-
-
-    gymObject.add(
-        torusRight
-    );
-
-
-    /* -------------------------------------------------
-       ORBIT RINGS
-    ------------------------------------------------- */
-
-    function createOrbit(
-        radiusX,
-        radiusY,
-        rotation
-    ) {
-
-        const curve =
-            new THREE.EllipseCurve(
-                0,
-                0,
-                radiusX,
-                radiusY,
-                0,
-                Math.PI * 2,
-                false,
-                0
-            );
-
-
-        const points =
-            curve.getPoints(
+        const geometry =
+            new THREE.TorusGeometry(
+                2.7 + i * 0.5,
+                0.012,
+                10,
                 120
             );
 
-
-        const geometry =
-            new THREE.BufferGeometry()
-                .setFromPoints(
-                    points
-                );
-
-
         const material =
-            new THREE.LineBasicMaterial({
-
-                color: 0x9f7cff,
-
+            new THREE.MeshBasicMaterial({
+                color:
+                    i % 2 === 0
+                        ? 0x8b5cf6
+                        : 0xec4899,
                 transparent: true,
-
-                opacity: .26
-
+                opacity: 0.28
             });
 
-
-        const line =
-            new THREE.Line(
+        const ring =
+            new THREE.Mesh(
                 geometry,
                 material
             );
 
+        ring.rotation.x =
+            Math.PI / 2.7;
 
-        line.rotation.set(
-            rotation.x,
-            rotation.y,
-            rotation.z
-        );
+        ring.rotation.z =
+            i * 0.55;
 
-
-        scene.add(
-            line
-        );
-
-
-        return line;
+        ringGroup.add(ring);
 
     }
 
 
-    const orbitA =
-        createOrbit(
-            2.6,
-            1.0,
-            {
-                x: .95,
-                y: .35,
-                z: .25
-            }
-        );
-
-
-    orbitA.position.copy(
-        gymObject.position
-    );
-
-
-    const orbitB =
-        createOrbit(
-            2.2,
-            .75,
-            {
-                x: 1.1,
-                y: -.5,
-                z: -.4
-            }
-        );
-
-
-    orbitB.position.copy(
-        gymObject.position
-    );
-
-
-    /* -------------------------------------------------
+    /* =========================
        PARTICLES
-    ------------------------------------------------- */
+    ========================== */
 
-    const particleCount =
-        window.innerWidth < 700
-            ? 180
-            : 500;
-
+    const particleCount = 700;
 
     const particlePositions =
         new Float32Array(
             particleCount * 3
         );
-
 
     for (
         let i = 0;
@@ -716,32 +583,31 @@ if (
         i++
     ) {
 
-        particlePositions[
-            i * 3
-        ] =
-            (Math.random() - .5) *
-            13;
+        const radius =
+            3.5 + Math.random() * 7;
 
-        particlePositions[
-            i * 3 + 1
-        ] =
-            (Math.random() - .5) *
-            9;
+        const angle =
+            Math.random() * Math.PI * 2;
 
-        particlePositions[
-            i * 3 + 2
-        ] =
-            (Math.random() - .5) *
-            7;
+        const y =
+            (Math.random() - 0.5) * 10;
+
+        particlePositions[i * 3] =
+            Math.cos(angle) * radius;
+
+        particlePositions[i * 3 + 1] =
+            y;
+
+        particlePositions[i * 3 + 2] =
+            Math.sin(angle) * radius;
 
     }
 
 
-    const particlesGeometry =
+    const particleGeometry =
         new THREE.BufferGeometry();
 
-
-    particlesGeometry.setAttribute(
+    particleGeometry.setAttribute(
         "position",
         new THREE.BufferAttribute(
             particlePositions,
@@ -750,259 +616,101 @@ if (
     );
 
 
-    const particlesMaterial =
+    const particleMaterial =
         new THREE.PointsMaterial({
-
-            color: 0xb8a4ff,
-
-            size:
-                window.innerWidth < 700
-                    ? .025
-                    : .018,
-
+            color: 0xb98cff,
+            size: 0.025,
             transparent: true,
-
-            opacity: .55
-
+            opacity: 0.65
         });
 
 
     const particles =
         new THREE.Points(
-            particlesGeometry,
-            particlesMaterial
+            particleGeometry,
+            particleMaterial
         );
 
-
-    scene.add(
-        particles
-    );
+    scene.add(particles);
 
 
-    /* -------------------------------------------------
-       LIGHTING
-    ------------------------------------------------- */
-
-    const ambientLight =
-        new THREE.AmbientLight(
-            0xffffff,
-            1.7
-        );
-
-
-    scene.add(
-        ambientLight
-    );
-
-
-    const purpleLight =
-        new THREE.PointLight(
-            0x8b5cf6,
-            22,
-            17
-        );
-
-
-    purpleLight.position.set(
-        2,
-        2,
-        5
-    );
-
-
-    scene.add(
-        purpleLight
-    );
-
-
-    const pinkLight =
-        new THREE.PointLight(
-            0xe879f9,
-            11,
-            12
-        );
-
-
-    pinkLight.position.set(
-        4,
-        -2,
-        1
-    );
-
-
-    scene.add(
-        pinkLight
-    );
-
-
-    const whiteLight =
-        new THREE.PointLight(
-            0xffffff,
-            8,
-            10
-        );
-
-
-    whiteLight.position.set(
-        -3,
-        2,
-        3
-    );
-
-
-    scene.add(
-        whiteLight
-    );
-
-
-    /* -------------------------------------------------
+    /* =========================
        MOUSE PARALLAX
-    ------------------------------------------------- */
+    ========================== */
 
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let smoothMouseX = 0;
-    let smoothMouseY = 0;
-
+    let targetRotationX = 0;
+    let targetRotationY = 0;
 
     window.addEventListener(
         "mousemove",
         event => {
 
-            mouseX =
-                (event.clientX /
-                    window.innerWidth) -
-                .5;
+            const normalizedX =
+                event.clientX /
+                window.innerWidth *
+                2 -
+                1;
 
-            mouseY =
-                (event.clientY /
-                    window.innerHeight) -
-                .5;
+            const normalizedY =
+                event.clientY /
+                window.innerHeight *
+                2 -
+                1;
+
+
+            targetRotationY =
+                normalizedX * 0.35;
+
+            targetRotationX =
+                normalizedY * 0.18;
 
         }
     );
 
 
-    /* -------------------------------------------------
-       SCROLL
-    ------------------------------------------------- */
-
-    let scrollY = 0;
-
-
-    window.addEventListener(
-        "scroll",
-        () => {
-
-            scrollY =
-                window.scrollY;
-
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    /* -------------------------------------------------
+    /* =========================
        ANIMATION
-    ------------------------------------------------- */
+    ========================== */
 
-    const clock =
-        new THREE.Clock();
-
+    const clock = new THREE.Clock();
 
     function animate() {
 
-        requestAnimationFrame(
-            animate
-        );
+        requestAnimationFrame(animate);
 
-
-        const time =
+        const elapsed =
             clock.getElapsedTime();
 
 
-        smoothMouseX +=
-            (mouseX - smoothMouseX) *
-            .04;
+        dumbbell.rotation.y +=
+            (targetRotationY -
+                dumbbell.rotation.y) * 0.03;
+
+        dumbbell.rotation.x +=
+            (targetRotationX -
+                dumbbell.rotation.x) * 0.03;
 
 
-        smoothMouseY +=
-            (mouseY - smoothMouseY) *
-            .04;
+        dumbbell.rotation.z =
+            Math.sin(elapsed * 0.55) * 0.09;
 
 
-        /* Dumbbell rotation */
-
-        gymObject.rotation.x +=
-            .0024;
+        dumbbell.position.y =
+            Math.sin(elapsed * 0.9) * 0.15;
 
 
-        gymObject.rotation.y +=
-            .0045;
+        ringGroup.rotation.z =
+            elapsed * 0.08;
 
+        ringGroup.rotation.x =
+            Math.sin(elapsed * 0.25) * 0.1;
 
-        gymObject.rotation.z =
-            smoothMouseX * .18;
-
-
-        /* Floating motion */
-
-        gymObject.position.y =
-            .1 +
-            Math.sin(time * .8) *
-            .14;
-
-
-        gymObject.position.x =
-            2.35 +
-            smoothMouseX *
-            .40;
-
-
-        gymObject.rotation.x +=
-            smoothMouseY * .0008;
-
-
-        /* Orbit motion */
-
-        orbitA.rotation.z =
-            time * .09;
-
-        orbitB.rotation.z =
-            -time * .07;
-
-
-        orbitA.position.x =
-            gymObject.position.x;
-
-        orbitA.position.y =
-            gymObject.position.y;
-
-
-        orbitB.position.x =
-            gymObject.position.x;
-
-        orbitB.position.y =
-            gymObject.position.y;
-
-
-        /* Particles */
 
         particles.rotation.y =
-            time * .012;
+            elapsed * 0.015;
 
         particles.rotation.x =
-            time * .004;
-
-
-        /* Scroll depth */
-
-        camera.position.y =
-            -scrollY *
-            .00015;
+            elapsed * 0.006;
 
 
         renderer.render(
@@ -1012,53 +720,58 @@ if (
 
     }
 
-
     animate();
 
 
-    /* -------------------------------------------------
+    /* =========================
        RESIZE
-    ------------------------------------------------- */
+    ========================== */
+
+    function resizeRenderer() {
+
+        const width =
+            container.clientWidth;
+
+        const height =
+            container.clientHeight;
+
+
+        camera.aspect =
+            width / height;
+
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize(
+            width,
+            height
+        );
+
+        renderer.setPixelRatio(
+            Math.min(window.devicePixelRatio, 2)
+        );
+
+    }
 
     window.addEventListener(
         "resize",
-        () => {
-
-            camera.aspect =
-                window.innerWidth /
-                window.innerHeight;
-
-
-            camera.updateProjectionMatrix();
-
-
-            renderer.setPixelRatio(
-                Math.min(
-                    window.devicePixelRatio,
-                    1.8
-                )
-            );
-
-
-            renderer.setSize(
-                window.innerWidth,
-                window.innerHeight
-            );
-
-        }
+        resizeRenderer
     );
+
+    resizeRenderer();
 
 }
 
 
-/* =====================================================
-   3D TILT CARDS
-===================================================== */
+initThreeScene();
+
+
+/* =========================================================
+   TILT CARDS
+========================================================= */
 
 const tiltCards =
-    document.querySelectorAll(
-        ".tilt-card"
-    );
+    document.querySelectorAll(".tilt-card");
 
 
 tiltCards.forEach(card => {
@@ -1066,6 +779,15 @@ tiltCards.forEach(card => {
     card.addEventListener(
         "mousemove",
         event => {
+
+            if (
+                !window.matchMedia(
+                    "(pointer: fine)"
+                ).matches
+            ) {
+                return;
+            }
+
 
             const rect =
                 card.getBoundingClientRect();
@@ -1084,31 +806,27 @@ tiltCards.forEach(card => {
             const centerX =
                 rect.width / 2;
 
-
             const centerY =
                 rect.height / 2;
-
-
-            const rotateX =
-                ((y - centerY) /
-                    centerY) *
-                -4;
 
 
             const rotateY =
                 ((x - centerX) /
                     centerX) *
-                4;
+                5;
+
+
+            const rotateX =
+                ((centerY - y) /
+                    centerY) *
+                5;
 
 
             card.style.transform =
-                `
-                perspective(1000px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                translateY(-5px)
-                scale(1.005)
-                `;
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)`;
 
         }
     );
@@ -1119,7 +837,7 @@ tiltCards.forEach(card => {
         () => {
 
             card.style.transform =
-                "";
+                "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
 
         }
     );
@@ -1127,32 +845,29 @@ tiltCards.forEach(card => {
 });
 
 
-/* =====================================================
+/* =========================================================
    SCROLL REVEAL
-===================================================== */
+========================================================= */
 
 const revealElements =
     document.querySelectorAll(
-        ".reveal"
+        ".reveal, .reveal-right"
     );
 
 
-const revealObserver =
+const observer =
     new IntersectionObserver(
         entries => {
 
             entries.forEach(entry => {
 
-                if (
-                    entry.isIntersecting
-                ) {
+                if (entry.isIntersecting) {
 
                     entry.target.classList.add(
                         "visible"
                     );
 
-
-                    revealObserver.unobserve(
+                    observer.unobserve(
                         entry.target
                     );
 
@@ -1162,94 +877,257 @@ const revealObserver =
 
         },
         {
-            threshold: .12
+            threshold: 0.12
         }
     );
 
 
-revealElements.forEach(
-    element => {
-
-        revealObserver.observe(
-            element
-        );
-
-    }
-);
+revealElements.forEach(element => {
+    observer.observe(element);
+});
 
 
-/* =====================================================
-   CONTACT FORM
-   FRONTEND ONLY
-===================================================== */
+/* =========================================================
+   CONTACT FORM -> BACKEND
+========================================================= */
 
 const contactForm =
     document.getElementById(
         "contactForm"
     );
 
+const formStatus =
+    document.getElementById(
+        "formStatus"
+    );
 
-contactForm.addEventListener(
-    "submit",
-    event => {
+const submitBtn =
+    document.getElementById(
+        "submitBtn"
+    );
 
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById(
-                "name"
-            ).value.trim();
-
-
-        const phone =
-            document.getElementById(
-                "phone"
-            ).value.trim();
+const submitText =
+    document.getElementById(
+        "submitText"
+    );
 
 
-        const interest =
-            document.getElementById(
-                "interest"
-            ).value;
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
 
 
-        if (!name || !phone) {
+            /* =========================
+               GET FORM VALUES
+            ========================== */
 
-            alert(
-                "Please enter your name and phone number."
-            );
+            const formData =
+                new FormData(
+                    contactForm
+                );
 
-            return;
+
+            const enquiry = {
+
+                name:
+                    formData
+                        .get("name")
+                        ?.trim() || "",
+
+                phone:
+                    formData
+                        .get("phone")
+                        ?.trim() || "",
+
+                email:
+                    formData
+                        .get("email")
+                        ?.trim() || "",
+
+                interest:
+                    formData
+                        .get("interest")
+                        ?.trim() || "",
+
+                message:
+                    formData
+                        .get("message")
+                        ?.trim() || ""
+
+            };
+
+
+            /* =========================
+               FRONTEND VALIDATION
+            ========================== */
+
+            if (
+                !enquiry.name ||
+                !enquiry.phone
+            ) {
+
+                showFormMessage(
+                    "Please enter your name and phone number.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /* =========================
+               LOADING STATE
+            ========================== */
+
+            setFormLoading(true);
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_BASE_URL}/api/enquiries`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    enquiry
+                                )
+                        }
+                    );
+
+
+                /* =========================
+                   RESPONSE
+                ========================== */
+
+                const result =
+                    await response.json();
+
+
+                if (
+                    response.ok &&
+                    result.success
+                ) {
+
+                    showFormMessage(
+                        "Your enquiry has been sent successfully!",
+                        "success"
+                    );
+
+
+                    contactForm.reset();
+
+                } else {
+
+                    showFormMessage(
+                        result.message ||
+                            "Could not send your enquiry.",
+                        "error"
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Backend connection error:",
+                    error
+                );
+
+
+                showFormMessage(
+                    "Could not connect to the server. Please make sure the backend is running.",
+                    "error"
+                );
+
+            } finally {
+
+                setFormLoading(false);
+
+            }
 
         }
+    );
+
+}
 
 
-        const selectedInterest =
-            interest ||
-            "your enquiry";
+/* =========================================================
+   FORM MESSAGE
+========================================================= */
+
+function showFormMessage(
+    message,
+    type
+) {
+
+    if (!formStatus) {
+        return;
+    }
 
 
-        alert(
-            `Thank you, ${name}!\n\n` +
-            `Your enquiry about ${selectedInterest.toLowerCase()} has been received.\n\n` +
-            `The ELVYRA team can contact you soon.`
-        );
+    formStatus.textContent =
+        message;
+
+    formStatus.className =
+        `form-status ${type}`;
+
+}
 
 
-        contactForm.reset();
+/* =========================================================
+   FORM LOADING
+========================================================= */
+
+function setFormLoading(
+    loading
+) {
+
+    if (
+        !submitBtn ||
+        !submitText
+    ) {
+        return;
+    }
+
+
+    submitBtn.disabled =
+        loading;
+
+
+    if (loading) {
+
+        submitText.textContent =
+            "Sending...";
+
+    } else {
+
+        submitText.textContent =
+            "Send Enquiry";
 
     }
-);
+
+}
 
 
-/* =====================================================
+/* =========================================================
    BACK TO TOP
-===================================================== */
+========================================================= */
 
-const backToTop =
+const backTop =
     document.getElementById(
-        "backToTop"
+        "backTop"
     );
 
 
@@ -1257,17 +1135,20 @@ window.addEventListener(
     "scroll",
     () => {
 
-        if (
-            window.scrollY > 550
-        ) {
+        if (!backTop) {
+            return;
+        }
 
-            backToTop.classList.add(
+
+        if (window.scrollY > 500) {
+
+            backTop.classList.add(
                 "show"
             );
 
         } else {
 
-            backToTop.classList.remove(
+            backTop.classList.remove(
                 "show"
             );
 
@@ -1277,17 +1158,68 @@ window.addEventListener(
 );
 
 
-backToTop.addEventListener(
-    "click",
-    () => {
+if (backTop) {
 
-        window.scrollTo({
+    backTop.addEventListener(
+        "click",
+        () => {
 
-            top: 0,
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
-            behavior: "smooth"
+        }
+    );
 
-        });
+}
 
-    }
-);
+
+/* =========================================================
+   SMOOTH LINK HANDLING
+========================================================= */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            event => {
+
+                const targetId =
+                    link
+                        .getAttribute("href");
+
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (target) {
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+
+            }
+        );
+
+    });
