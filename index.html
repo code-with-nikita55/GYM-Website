@@ -1,30 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MS Fitness | Rasayani, Maharashtra</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <!-- Google Fonts -->
+    <title>ELVYRA | Elevate Your Strength.</title>
+
+
+    <!-- =================================================
+         FONTS
+    ================================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
-    <!-- Font Awesome -->
+
+    <!-- =================================================
+         FONT AWESOME
+    ================================================== -->
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
+
+    <!-- =================================================
+         THREE.JS
+    ================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"
+    ></script>
+
+
+    <!-- =================================================
+         STYLE
+    ================================================== -->
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     PAGE LOADER
+===================================================== -->
+
+<div class="page-loader" id="pageLoader">
+
+    <div class="loader-logo">
+        ELV<span>YRA</span>
+    </div>
+
+    <div class="loader-line">
+        <span></span>
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CURSOR
+===================================================== -->
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
 
 <!-- =====================================================
      NAVBAR
@@ -34,40 +95,47 @@
 
     <div class="container nav-container">
 
+
         <a href="#home" class="logo">
-            MS <span>FITNESS</span>
+            ELV<span>YRA</span>
         </a>
+
 
         <nav class="nav-menu" id="navMenu">
 
             <a href="#home" class="active">Home</a>
 
-            <a href="#about">About Us</a>
-
-            <a href="#goals">Fitness Goals</a>
+            <a href="#about">About</a>
 
             <a href="#programs">Programs</a>
 
-            <a href="#gallery">Gallery</a>
+            <a href="#experience">Experience</a>
 
             <a href="#trainers">Trainers</a>
 
-            <a href="#pricing">Membership</a>
+            <a href="#membership">Membership</a>
 
             <a href="#contact">Contact</a>
 
         </nav>
 
-        <a href="#contact" class="nav-button">
-            BOOK FREE TRIAL
+
+        <a
+            href="#membership"
+            class="nav-cta"
+        >
+            JOIN ELVYRA
         </a>
+
 
         <button
             class="menu-toggle"
             id="menuToggle"
-            aria-label="Open navigation menu"
+            aria-label="Menu"
         >
+
             <i class="fa-solid fa-bars"></i>
+
         </button>
 
     </div>
@@ -79,51 +147,75 @@
      HERO
 ===================================================== -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
 
-    <div class="hero-overlay"></div>
+
+    <!-- 3D CANVAS -->
+
+    <canvas id="heroCanvas"></canvas>
+
+
+    <!-- BACKGROUND ELEMENTS -->
+
+    <div class="hero-grid"></div>
+
+    <div class="hero-noise"></div>
+
+    <div class="hero-vignette"></div>
+
+
+    <!-- HERO CONTENT -->
 
     <div class="container hero-content">
 
-        <div class="hero-text">
+        <div class="hero-copy">
 
-            <div class="hero-badge">
 
-                <i class="fa-solid fa-location-dot"></i>
+            <div class="hero-eyebrow">
 
-                RASAYANI • MAHARASHTRA
+                <span></span>
+
+                ELVYRA FITNESS
+
+                <span></span>
 
             </div>
 
 
             <h1>
 
-                GET FIT.
+                ELEVATE
 
-                <span>GET STRONG.</span>
+                <span>
+                    YOUR
+                </span>
 
-                LIVE BETTER.
+                STRENGTH.
 
             </h1>
 
 
-            <p class="hero-description">
+            <p>
 
-                MS Fitness is your local fitness center in Rasayani,
-                helping beginners and regular gym-goers work towards
-                strength, weight loss, muscle gain and better fitness.
+                Train with purpose. Build real strength.
+                Create a healthier and more confident version
+                of yourself.
 
             </p>
 
 
-            <div class="hero-buttons">
+            <div class="hero-actions">
+
 
                 <a
-                    href="#contact"
+                    href="#membership"
                     class="btn btn-primary"
                 >
 
-                    BOOK A FREE TRIAL
+                    EXPLORE MEMBERSHIP
 
                     <i class="fa-solid fa-arrow-right"></i>
 
@@ -131,49 +223,57 @@
 
 
                 <a
-                    href="#pricing"
-                    class="btn btn-outline"
+                    href="#experience"
+                    class="btn btn-glass"
                 >
 
-                    VIEW MEMBERSHIP
+                    ENTER ELVYRA
+
+                    <i class="fa-solid fa-chevron-down"></i>
 
                 </a>
 
             </div>
 
 
-            <p class="hero-note">
-
-                No complicated process • Visit us • Talk to our team
-
-            </p>
+            <div class="hero-stats">
 
 
-            <div class="hero-trust">
+                <div class="hero-stat">
 
-                <div>
+                    <strong>
+                        01
+                    </strong>
 
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    Beginner Friendly
+                    <span>
+                        STRENGTH
+                    </span>
 
                 </div>
 
 
-                <div>
+                <div class="hero-stat">
 
-                    <i class="fa-solid fa-circle-check"></i>
+                    <strong>
+                        02
+                    </strong>
 
-                    Experienced Guidance
+                    <span>
+                        DISCIPLINE
+                    </span>
 
                 </div>
 
 
-                <div>
+                <div class="hero-stat">
 
-                    <i class="fa-solid fa-circle-check"></i>
+                    <strong>
+                        03
+                    </strong>
 
-                    Flexible Workout Options
+                    <span>
+                        PROGRESS
+                    </span>
 
                 </div>
 
@@ -184,165 +284,82 @@
     </div>
 
 
-    <div class="hero-location-card">
+    <!-- FLOATING BADGES -->
 
-        <i class="fa-solid fa-location-dot"></i>
+    <div class="floating-badge badge-left">
 
-        <div>
+        <i class="fa-solid fa-dumbbell"></i>
 
-            <strong>MS Fitness, Rasayani</strong>
-
-            <span>
-                Near Janta School, Mohpada Alias Wasambe
-            </span>
-
-        </div>
+        <span>
+            STRENGTH
+        </span>
 
     </div>
+
+
+    <div class="floating-badge badge-right">
+
+        <i class="fa-solid fa-bolt"></i>
+
+        <span>
+            PERFORMANCE
+        </span>
+
+    </div>
+
+
+    <div class="hero-scroll">
+
+        <span>
+            SCROLL
+        </span>
+
+        <div class="scroll-line"></div>
+
+    </div>
+
 
 </section>
 
 
 
 <!-- =====================================================
-     TRUST BAR
+     MARQUEE
 ===================================================== -->
 
-<section class="trust-bar">
+<section class="marquee">
 
-    <div class="container trust-grid">
+    <div class="marquee-track">
 
+        <span>
+            ELEVATE YOUR STRENGTH
+        </span>
 
-        <div class="trust-item">
+        <b>✦</b>
 
-            <div class="trust-icon">
-                <i class="fa-solid fa-location-dot"></i>
-            </div>
+        <span>
+            TRAIN WITH PURPOSE
+        </span>
 
-            <div>
+        <b>✦</b>
 
-                <strong>LOCAL & CONVENIENT</strong>
+        <span>
+            BUILD YOUR BEST
+        </span>
 
-                <span>
-                    Rasayani, Maharashtra
-                </span>
+        <b>✦</b>
 
-            </div>
+        <span>
+            ELEVATE YOUR STRENGTH
+        </span>
 
-        </div>
+        <b>✦</b>
 
+        <span>
+            TRAIN WITH PURPOSE
+        </span>
 
-        <div class="trust-item">
-
-            <div class="trust-icon">
-                <i class="fa-solid fa-user-check"></i>
-            </div>
-
-            <div>
-
-                <strong>TRAINER GUIDANCE</strong>
-
-                <span>
-                    Support throughout your journey
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="trust-item">
-
-            <div class="trust-icon">
-                <i class="fa-solid fa-wallet"></i>
-            </div>
-
-            <div>
-
-                <strong>FLEXIBLE MEMBERSHIP</strong>
-
-                <span>
-                    Plans from ₹1,000 to ₹12,000
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="trust-item">
-
-            <div class="trust-icon">
-                <i class="fa-solid fa-comments"></i>
-            </div>
-
-            <div>
-
-                <strong>EASY ENQUIRY</strong>
-
-                <span>
-                    Ask us before joining
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LOCATION STRIP
-===================================================== -->
-
-<section class="location-strip">
-
-    <div class="container location-strip-inner">
-
-        <div class="location-text">
-
-            <span class="section-label">
-                FIND US EASILY
-            </span>
-
-            <h3>
-                MS Fitness is located in the heart of Rasayani.
-            </h3>
-
-            <p>
-                Top Floor of Bank of India, Rasayani,
-                Near Janta School, Mohpada Alias Wasambe,
-                Maharashtra 410222.
-            </p>
-
-        </div>
-
-
-        <div class="location-actions">
-
-            <a
-                href="https://www.google.com/maps/search/?api=1&query=Top+Floor+of+Bank+of+India+Rasayani+Near+Janta+School+Mohpada+Alias+Wasambe+Maharashtra+410222"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-light"
-            >
-                GET DIRECTIONS
-                <i class="fa-solid fa-location-arrow"></i>
-            </a>
-
-
-            <a
-                href="#contact"
-                class="text-action"
-            >
-                CONTACT MS FITNESS
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
+        <b>✦</b>
 
     </div>
 
@@ -354,327 +371,147 @@
      ABOUT
 ===================================================== -->
 
-<section class="section about" id="about">
+<section
+    class="section about"
+    id="about"
+>
 
     <div class="container about-grid">
 
 
-        <div class="about-images">
+        <div class="about-visual reveal">
 
-            <div class="main-photo">
+            <div class="image-frame">
 
                 <img
-                    src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1000&q=85"
-                    alt="MS Fitness gym"
+                    src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=85"
+                    alt="ELVYRA workout"
                 >
+
+                <div class="image-shine"></div>
 
             </div>
 
 
-            <div class="small-photo">
-
-                <img
-                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85"
-                    alt="Gym equipment"
-                >
-
-            </div>
-
-
-            <div class="experience-box">
-
-                <strong>MS</strong>
+            <div class="about-card glass-card">
 
                 <span>
-                    FITNESS<br>
-                    RASAYANI
+                    THE ELVYRA WAY
                 </span>
 
+                <strong>
+                    TRAIN
+                </strong>
+
+                <small>
+                    CONSISTENTLY.
+                </small>
+
             </div>
+
+
+            <div class="about-orbit"></div>
 
         </div>
 
 
 
-        <div class="about-content">
+        <div class="about-content reveal">
 
-            <span class="section-label">
-                ABOUT MS FITNESS
-            </span>
+            <div class="section-label">
+                ABOUT ELVYRA
+            </div>
 
 
             <h2>
 
-                FITNESS THAT
+                MORE THAN
 
-                <span>FITS REAL LIFE.</span>
+                <span>A GYM.</span>
 
             </h2>
 
 
             <p>
 
-                Everyone joins a gym for a different reason.
-                You may want to lose weight, gain muscle,
-                become stronger, improve stamina or simply
-                become more active.
+                ELVYRA is built around the idea that becoming
+                stronger is not only about lifting heavier.
+                It is about discipline, consistency and
+                believing that you can improve.
 
             </p>
 
 
             <p>
 
-                At MS Fitness, the focus is on creating a
-                comfortable environment where you can stay
-                consistent and work towards your personal goals.
+                Whether you are starting from zero or already
+                training regularly, every workout is another
+                step forward.
 
             </p>
 
 
-            <div class="about-features">
+            <div class="feature-grid">
 
 
-                <div class="about-feature">
+                <div class="feature-item">
 
                     <i class="fa-solid fa-dumbbell"></i>
 
-                    <div>
+                    <strong>
+                        Strength
+                    </strong>
 
-                        <h4>
-                            Quality Equipment
-                        </h4>
-
-                        <p>
-                            Equipment for strength and fitness workouts.
-                        </p>
-
-                    </div>
+                    <span>
+                        Build power and confidence.
+                    </span>
 
                 </div>
 
 
-                <div class="about-feature">
+                <div class="feature-item">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    <strong>
+                        Energy
+                    </strong>
+
+                    <span>
+                        Move better every day.
+                    </span>
+
+                </div>
+
+
+                <div class="feature-item">
 
                     <i class="fa-solid fa-user-check"></i>
 
-                    <div>
+                    <strong>
+                        Guidance
+                    </strong>
 
-                        <h4>
-                            Trainer Support
-                        </h4>
-
-                        <p>
-                            Guidance for beginners and regular members.
-                        </p>
-
-                    </div>
+                    <span>
+                        Train with better technique.
+                    </span>
 
                 </div>
 
 
-                <div class="about-feature">
+                <div class="feature-item">
 
-                    <i class="fa-solid fa-clock"></i>
+                    <i class="fa-solid fa-chart-line"></i>
 
-                    <div>
+                    <strong>
+                        Progress
+                    </strong>
 
-                        <h4>
-                            Convenient Schedule
-                        </h4>
-
-                        <p>
-                            Workout options that fit your routine.
-                        </p>
-
-                    </div>
+                    <span>
+                        Keep improving over time.
+                    </span>
 
                 </div>
-
-
-                <div class="about-feature">
-
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-
-                    <div>
-
-                        <h4>
-                            Flexible Plans
-                        </h4>
-
-                        <p>
-                            Membership options for different budgets.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FITNESS GOALS
-===================================================== -->
-
-<section
-    class="section goals dark-section"
-    id="goals"
->
-
-    <div class="container">
-
-        <div class="section-heading center">
-
-            <span class="section-label">
-                YOUR FITNESS GOAL
-            </span>
-
-
-            <h2>
-
-                START WITH
-
-                <span>YOUR GOAL.</span>
-
-            </h2>
-
-
-            <p>
-
-                Choose the direction that matches what you
-                want to achieve from your workouts.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="goal-grid">
-
-
-            <div class="goal-card">
-
-                <div class="goal-number">
-                    01
-                </div>
-
-                <div class="goal-icon">
-                    <i class="fa-solid fa-fire"></i>
-                </div>
-
-                <h3>
-                    Weight Loss
-                </h3>
-
-                <p>
-
-                    Build a regular workout routine,
-                    improve fitness and stay active.
-
-                </p>
-
-                <a href="#contact">
-                    ASK ABOUT THIS
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-
-            <div class="goal-card">
-
-                <div class="goal-number">
-                    02
-                </div>
-
-                <div class="goal-icon">
-                    <i class="fa-solid fa-dumbbell"></i>
-                </div>
-
-                <h3>
-                    Muscle Gain
-                </h3>
-
-                <p>
-
-                    Work on strength, resistance training
-                    and progressive fitness goals.
-
-                </p>
-
-                <a href="#contact">
-                    ASK ABOUT THIS
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-
-            <div class="goal-card">
-
-                <div class="goal-number">
-                    03
-                </div>
-
-                <div class="goal-icon">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                </div>
-
-                <h3>
-                    General Fitness
-                </h3>
-
-                <p>
-
-                    Improve stamina, mobility, strength
-                    and everyday physical activity.
-
-                </p>
-
-                <a href="#contact">
-                    ASK ABOUT THIS
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-
-            <div class="goal-card">
-
-                <div class="goal-number">
-                    04
-                </div>
-
-                <div class="goal-icon">
-                    <i class="fa-solid fa-person-running"></i>
-                </div>
-
-                <h3>
-                    Functional Fitness
-                </h3>
-
-                <p>
-
-                    Improve movement, endurance and
-                    practical everyday fitness.
-
-                </p>
-
-                <a href="#contact">
-                    ASK ABOUT THIS
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
 
             </div>
 
@@ -698,20 +535,19 @@
     <div class="container">
 
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
             <div>
 
-                <span class="section-label">
-                    OUR PROGRAMS
-                </span>
-
+                <div class="section-label">
+                    TRAINING
+                </div>
 
                 <h2>
 
-                    TRAINING FOR
+                    DESIGNED FOR
 
-                    <span>EVERY LEVEL.</span>
+                    <span>PROGRESS.</span>
 
                 </h2>
 
@@ -720,9 +556,8 @@
 
             <p>
 
-                Whether you are a beginner or already
-                comfortable in the gym, choose a training
-                approach that suits your routine.
+                Choose a training style that matches
+                your goals and experience level.
 
             </p>
 
@@ -733,130 +568,299 @@
         <div class="program-grid">
 
 
-            <div class="program-card">
+            <article
+                class="program-card tilt-card reveal"
+            >
 
-                <img
-                    src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=85"
-                    alt="Strength training"
-                >
-
-
-                <div class="program-overlay">
-
-                    <div class="program-top">
-                        <span>01</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
+                <div class="card-glow"></div>
 
 
-                    <h3>
-                        Strength Training
-                    </h3>
+                <span class="program-number">
+                    01
+                </span>
 
+
+                <div class="program-icon">
+
+                    <i class="fa-solid fa-dumbbell"></i>
+
+                </div>
+
+
+                <h3>
+                    Strength
+                </h3>
+
+
+                <p>
+
+                    Build strength with structured resistance
+                    workouts and better technique.
+
+                </p>
+
+
+                <a href="#contact">
+
+                    EXPLORE
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <article
+                class="program-card tilt-card reveal"
+            >
+
+                <div class="card-glow"></div>
+
+
+                <span class="program-number">
+                    02
+                </span>
+
+
+                <div class="program-icon">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                </div>
+
+
+                <h3>
+                    Fat Loss
+                </h3>
+
+
+                <p>
+
+                    Build a more active routine and
+                    work towards your fitness goals.
+
+                </p>
+
+
+                <a href="#contact">
+
+                    EXPLORE
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <article
+                class="program-card tilt-card reveal"
+            >
+
+                <div class="card-glow"></div>
+
+
+                <span class="program-number">
+                    03
+                </span>
+
+
+                <div class="program-icon">
+
+                    <i class="fa-solid fa-person-running"></i>
+
+                </div>
+
+
+                <h3>
+                    Fitness
+                </h3>
+
+
+                <p>
+
+                    Improve stamina, mobility and
+                    everyday physical performance.
+
+                </p>
+
+
+                <a href="#contact">
+
+                    EXPLORE
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <article
+                class="program-card tilt-card reveal"
+            >
+
+                <div class="card-glow"></div>
+
+
+                <span class="program-number">
+                    04
+                </span>
+
+
+                <div class="program-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <h3>
+                    Personal Training
+                </h3>
+
+
+                <p>
+
+                    Get more focused guidance around
+                    your individual goals.
+
+                </p>
+
+
+                <a href="#contact">
+
+                    EXPLORE
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     3D EXPERIENCE
+===================================================== -->
+
+<section
+    class="experience"
+    id="experience"
+>
+
+    <div class="experience-background">
+
+        <div class="experience-glow glow-one"></div>
+
+        <div class="experience-glow glow-two"></div>
+
+    </div>
+
+
+    <div class="container experience-grid">
+
+
+        <div class="experience-copy reveal">
+
+            <div class="section-label">
+                THE ELVYRA MINDSET
+            </div>
+
+
+            <h2>
+
+                BUILD
+
+                <span>
+                    STRENGTH.
+                </span>
+
+                <br>
+
+                BUILD
+
+                <span>
+                    YOURSELF.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                The strongest transformation starts long
+                before the final result. It starts when
+                you decide to show up consistently.
+
+            </p>
+
+
+            <div class="experience-points">
+
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
 
                     <p>
-                        Build strength with structured workouts
-                        and proper training guidance.
+                        Show up
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <p>
+                        Train smart
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        03
+                    </span>
+
+                    <p>
+                        Keep going
                     </p>
 
                 </div>
 
             </div>
 
+        </div>
 
 
-            <div class="program-card">
 
-                <img
-                    src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85"
-                    alt="Group fitness"
-                >
+        <div class="advanced-3d reveal">
 
-
-                <div class="program-overlay">
-
-                    <div class="program-top">
-                        <span>02</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-
-
-                    <h3>
-                        Group Fitness
-                    </h3>
-
-
-                    <p>
-                        Train with others and make your workouts
-                        more energetic and consistent.
-                    </p>
-
-                </div>
-
+            <div class="three-label label-top">
+                ELVYRA
             </div>
 
-
-
-            <div class="program-card">
-
-                <img
-                    src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=900&q=85"
-                    alt="Personal training"
-                >
-
-
-                <div class="program-overlay">
-
-                    <div class="program-top">
-                        <span>03</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-
-
-                    <h3>
-                        Personal Training
-                    </h3>
-
-
-                    <p>
-                        Get focused support around your
-                        individual fitness goals.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="program-card">
-
-                <img
-                    src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=85"
-                    alt="Cardio workout"
-                >
-
-
-                <div class="program-overlay">
-
-                    <div class="program-top">
-                        <span>04</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-
-
-                    <h3>
-                        Cardio & Fitness
-                    </h3>
-
-
-                    <p>
-                        Improve stamina, activity levels and
-                        overall fitness.
-                    </p>
-
-                </div>
-
+            <div class="three-label label-bottom">
+                ELEVATE YOUR STRENGTH.
             </div>
 
         </div>
@@ -872,27 +876,25 @@
 ===================================================== -->
 
 <section
-    class="section gallery-section dark-section"
-    id="gallery"
+    class="section gallery"
 >
 
     <div class="container">
 
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
             <div>
 
-                <span class="section-label">
-                    INSIDE MS FITNESS
-                </span>
-
+                <div class="section-label">
+                    THE EXPERIENCE
+                </div>
 
                 <h2>
 
-                    SEE THE
+                    INSIDE
 
-                    <span>ENVIRONMENT.</span>
+                    <span>ELVYRA.</span>
 
                 </h2>
 
@@ -901,121 +903,84 @@
 
             <p>
 
-                Real photographs of your gym can be added here
-                so visitors can understand the space before
-                coming for a trial.
+                Replace these sample visuals with your real
+                gym photographs before publishing.
 
             </p>
 
         </div>
 
 
+
         <div class="gallery-grid">
 
-            <div class="gallery-item gallery-large">
+
+            <div class="gallery-item gallery-large reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=85"
-                    alt="Gym interior"
+                    src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1300&q=85"
+                    alt="Gym floor"
                 >
 
-                <div class="gallery-label">
-                    GYM FLOOR
+                <div class="gallery-caption">
+
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        TRAINING FLOOR
+                    </strong>
+
                 </div>
 
             </div>
 
 
-            <div class="gallery-item">
+            <div class="gallery-item reveal">
 
                 <img
                     src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
-                    alt="Fitness equipment"
+                    alt="Gym equipment"
                 >
 
-                <div class="gallery-label">
-                    EQUIPMENT
+                <div class="gallery-caption">
+
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        EQUIPMENT
+                    </strong>
+
                 </div>
 
             </div>
 
 
-            <div class="gallery-item">
+            <div class="gallery-item reveal">
 
                 <img
                     src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=85"
-                    alt="Workout area"
+                    alt="Strength training"
                 >
 
-                <div class="gallery-label">
-                    WORKOUT AREA
+                <div class="gallery-caption">
+
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        TRAINING
+                    </strong>
+
                 </div>
 
             </div>
 
         </div>
-
-
-        <div class="real-photo-note">
-
-            <i class="fa-solid fa-camera"></i>
-
-            <span>
-                Tip: Replace these sample photos with real MS Fitness
-                photos for stronger local trust.
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FREE TRIAL CTA
-===================================================== -->
-
-<section class="trial-section">
-
-    <div class="trial-overlay"></div>
-
-
-    <div class="container trial-content">
-
-        <span class="section-label">
-            TAKE THE FIRST STEP
-        </span>
-
-
-        <h2>
-
-            SEE THE GYM.
-
-            <span>TRY A WORKOUT.</span>
-
-        </h2>
-
-
-        <p>
-
-            Visit MS Fitness, check the facilities,
-            talk to our team and decide when you are ready.
-
-        </p>
-
-
-        <a
-            href="#contact"
-            class="btn btn-primary"
-        >
-
-            BOOK FREE TRIAL
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
 
     </div>
 
@@ -1035,14 +1000,13 @@
     <div class="container">
 
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
             <div>
 
-                <span class="section-label">
-                    OUR TRAINERS
-                </span>
-
+                <div class="section-label">
+                    COACHING
+                </div>
 
                 <h2>
 
@@ -1057,8 +1021,8 @@
 
             <p>
 
-                Add your real trainer profiles here so
-                visitors know who will guide them.
+                Add your actual trainers and specializations
+                here when your final content is ready.
 
             </p>
 
@@ -1069,105 +1033,105 @@
         <div class="trainer-grid">
 
 
-            <div class="trainer-card">
+            <article
+                class="trainer-card tilt-card reveal"
+            >
 
                 <div class="trainer-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=700&q=85"
-                        alt="MS Fitness trainer"
+                        src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85"
+                        alt="Fitness trainer"
                     >
 
                 </div>
 
 
-                <div class="trainer-info">
+                <div class="trainer-overlay">
 
                     <span>
-                        TRAINER PROFILE
+                        TRAINER
                     </span>
-
 
                     <h3>
                         Add Trainer Name
                     </h3>
 
-
                     <p>
-                        Add experience and specialization
+                        Strength & Fitness
                     </p>
 
                 </div>
 
-            </div>
+            </article>
 
 
 
-            <div class="trainer-card">
+            <article
+                class="trainer-card tilt-card reveal"
+            >
 
                 <div class="trainer-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=700&q=85"
-                        alt="MS Fitness trainer"
+                        src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=85"
+                        alt="Fitness trainer"
                     >
 
                 </div>
 
 
-                <div class="trainer-info">
+                <div class="trainer-overlay">
 
                     <span>
-                        TRAINER PROFILE
+                        TRAINER
                     </span>
-
 
                     <h3>
                         Add Trainer Name
                     </h3>
 
-
                     <p>
-                        Add experience and specialization
+                        Fitness & Conditioning
                     </p>
 
                 </div>
 
-            </div>
+            </article>
 
 
 
-            <div class="trainer-card">
+            <article
+                class="trainer-card tilt-card reveal"
+            >
 
                 <div class="trainer-image">
 
                     <img
-                        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=85"
-                        alt="MS Fitness trainer"
+                        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=85"
+                        alt="Fitness training"
                     >
 
                 </div>
 
 
-                <div class="trainer-info">
+                <div class="trainer-overlay">
 
                     <span>
-                        TRAINER PROFILE
+                        TRAINER
                     </span>
-
 
                     <h3>
                         Add Trainer Name
                     </h3>
 
-
                     <p>
-                        Add experience and specialization
+                        Functional Training
                     </p>
 
                 </div>
 
-            </div>
+            </article>
 
         </div>
 
@@ -1182,34 +1146,36 @@
 ===================================================== -->
 
 <section
-    class="section pricing dark-section"
-    id="pricing"
+    class="section membership"
+    id="membership"
 >
 
     <div class="container">
 
 
-        <div class="section-heading center">
+        <div class="section-heading centered reveal">
 
-            <span class="section-label">
-                MEMBERSHIP PLANS
-            </span>
+            <div>
 
+                <div class="section-label">
+                    MEMBERSHIP
+                </div>
 
-            <h2>
+                <h2>
 
-                FIND YOUR
+                    THREE PLANS.
 
-                <span>RIGHT PLAN.</span>
+                    <span>ONE GOAL.</span>
 
-            </h2>
+                </h2>
+
+            </div>
 
 
             <p>
 
-                Membership options from ₹1,000 to ₹12,000.
-                Choose a plan according to your goals and
-                preferred commitment.
+                Simple membership options so you can choose
+                the commitment that fits your fitness journey.
 
             </p>
 
@@ -1217,30 +1183,59 @@
 
 
 
-        <div class="pricing-grid">
+        <div class="membership-grid">
 
 
-            <!-- MONTHLY -->
+            <!-- PLAN 01 -->
 
-            <div class="price-card">
+            <article
+                class="membership-card tilt-card reveal"
+            >
 
-                <span class="plan-name">
-                    MONTHLY
+                <div class="membership-glow"></div>
+
+
+                <div class="plan-number">
+                    01
+                </div>
+
+
+                <span class="plan-label">
+                    START
                 </span>
 
 
                 <h3>
-                    ₹1,000
-                    <small>/ month</small>
+                    Monthly
                 </h3>
 
 
-                <p>
-                    Start your fitness journey.
+                <div class="price">
+
+                    <span>
+                        ₹
+                    </span>
+
+                    <strong>
+                        1,200
+                    </strong>
+
+                    <small>
+                        / month
+                    </small>
+
+                </div>
+
+
+                <p class="plan-description">
+
+                    A flexible option for starting
+                    your fitness routine.
+
                 </p>
 
 
-                <div class="price-line"></div>
+                <div class="plan-divider"></div>
 
 
                 <ul>
@@ -1252,76 +1247,17 @@
 
                     <li>
                         <i class="fa-solid fa-check"></i>
-                        Basic trainer guidance
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Fitness assessment
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Access to gym equipment
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#contact"
-                    class="price-button"
-                >
-                    ENQUIRE NOW
-                </a>
-
-            </div>
-
-
-
-            <!-- 3 MONTHS -->
-
-            <div class="price-card">
-
-                <span class="plan-name">
-                    3 MONTHS
-                </span>
-
-
-                <h3>
-                    ₹2,500
-                    <small>/ 3 months</small>
-                </h3>
-
-
-                <p>
-                    Build consistency over time.
-                </p>
-
-
-                <div class="price-line"></div>
-
-
-                <ul>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Full gym access
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
                         Trainer guidance
                     </li>
 
                     <li>
                         <i class="fa-solid fa-check"></i>
-                        Fitness support
+                        Equipment access
                     </li>
 
                     <li>
                         <i class="fa-solid fa-check"></i>
-                        Progress assessment
+                        Basic fitness assessment
                     </li>
 
                 </ul>
@@ -1329,41 +1265,70 @@
 
                 <a
                     href="#contact"
-                    class="price-button"
+                    class="plan-button"
                 >
-                    JOIN NOW
+                    GET STARTED
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- 6 MONTHS -->
+            <!-- PLAN 02 -->
 
-            <div class="price-card featured">
+            <article
+                class="membership-card featured tilt-card reveal"
+            >
 
-                <div class="popular">
+                <div class="membership-glow"></div>
+
+
+                <div class="popular-label">
                     MOST POPULAR
                 </div>
 
 
-                <span class="plan-name">
-                    6 MONTHS
+                <div class="plan-number">
+                    02
+                </div>
+
+
+                <span class="plan-label">
+                    COMMIT
                 </span>
 
 
                 <h3>
-                    ₹5,000
-                    <small>/ 6 months</small>
+                    6 Months
                 </h3>
 
 
-                <p>
-                    Great for building a regular routine.
+                <div class="price">
+
+                    <span>
+                        ₹
+                    </span>
+
+                    <strong>
+                        5,000
+                    </strong>
+
+                    <small>
+                        / 6 months
+                    </small>
+
+                </div>
+
+
+                <p class="plan-description">
+
+                    A balanced choice for building
+                    consistency and routine.
+
                 </p>
 
 
-                <div class="price-line"></div>
+                <div class="plan-divider"></div>
 
 
                 <ul>
@@ -1375,12 +1340,12 @@
 
                     <li>
                         <i class="fa-solid fa-check"></i>
-                        Trainer guidance
+                        Trainer support
                     </li>
 
                     <li>
                         <i class="fa-solid fa-check"></i>
-                        Regular progress checks
+                        Progress assessments
                     </li>
 
                     <li>
@@ -1393,36 +1358,65 @@
 
                 <a
                     href="#contact"
-                    class="price-button"
+                    class="plan-button"
                 >
-                    JOIN NOW
+                    CHOOSE 6 MONTHS
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- 1 YEAR -->
+            <!-- PLAN 03 -->
 
-            <div class="price-card">
+            <article
+                class="membership-card tilt-card reveal"
+            >
 
-                <span class="plan-name">
-                    1 YEAR
+                <div class="membership-glow"></div>
+
+
+                <div class="plan-number">
+                    03
+                </div>
+
+
+                <span class="plan-label">
+                    COMMIT
                 </span>
 
 
                 <h3>
-                    ₹8,000
-                    <small>/ year</small>
+                    Annual
                 </h3>
 
 
-                <p>
-                    Plan your fitness for the long term.
+                <div class="price">
+
+                    <span>
+                        ₹
+                    </span>
+
+                    <strong>
+                        8,000
+                    </strong>
+
+                    <small>
+                        / year
+                    </small>
+
+                </div>
+
+
+                <p class="plan-description">
+
+                    For people who want to make
+                    fitness a long-term habit.
+
                 </p>
 
 
-                <div class="price-line"></div>
+                <div class="plan-divider"></div>
 
 
                 <ul>
@@ -1452,83 +1446,22 @@
 
                 <a
                     href="#contact"
-                    class="price-button"
+                    class="plan-button"
                 >
-                    JOIN NOW
+                    GO ANNUAL
                 </a>
 
-            </div>
-
-
-
-            <!-- PREMIUM -->
-
-            <div class="price-card premium-card">
-
-                <span class="plan-name">
-                    PREMIUM
-                </span>
-
-
-                <h3>
-                    ₹12,000
-                    <small>/ plan</small>
-                </h3>
-
-
-                <p>
-                    Personal attention for specific goals.
-                </p>
-
-
-                <div class="price-line"></div>
-
-
-                <ul>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Personal trainer
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Personalized workout plan
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Progress tracking
-                    </li>
-
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        Personal fitness guidance
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="#contact"
-                    class="price-button"
-                >
-                    ENQUIRE NOW
-                </a>
-
-            </div>
+            </article>
 
         </div>
 
 
-        <div class="pricing-note">
+        <p class="membership-note">
 
-            <i class="fa-solid fa-circle-info"></i>
+            Membership prices and inclusions can be updated
+            according to the final ELVYRA plans.
 
-            Prices shown are editable. Update the inclusions
-            and final prices according to MS Fitness's actual plans.
-
-        </div>
+        </p>
 
     </div>
 
@@ -1537,190 +1470,55 @@
 
 
 <!-- =====================================================
-     MEMBER REVIEWS
+     FINAL CTA
 ===================================================== -->
 
-<section class="section reviews">
+<section
+    class="final-cta"
+>
 
-    <div class="container">
+    <div class="final-orb orb-a"></div>
+
+    <div class="final-orb orb-b"></div>
 
 
-        <div class="section-heading center">
+    <div class="container final-content reveal">
 
-            <span class="section-label">
-                MEMBER FEEDBACK
+
+        <div class="section-label">
+            YOUR NEXT LEVEL
+        </div>
+
+
+        <h2>
+
+            DON'T WAIT
+
+            <span>
+                TO BEGIN.
             </span>
 
+        </h2>
 
-            <h2>
 
-                WHAT MEMBERS
+        <p>
 
-                <span>SAY ABOUT US.</span>
+            One workout can become a habit.
+            One habit can change everything.
 
-            </h2>
+        </p>
 
 
-            <p>
+        <a
+            href="#contact"
+            class="btn btn-primary"
+        >
 
-                Add genuine reviews from your actual MS Fitness
-                members here to strengthen local trust.
+            START WITH ELVYRA
 
-            </p>
+            <i class="fa-solid fa-arrow-right"></i>
 
-        </div>
-
-
-
-        <div class="review-grid">
-
-
-            <div class="review-card">
-
-                <div class="review-top">
-
-                    <div class="review-stars">
-                        ★★★★★
-                    </div>
-
-                    <span>
-                        MEMBER REVIEW
-                    </span>
-
-                </div>
-
-
-                <p>
-
-                    "Add a genuine review from an MS Fitness
-                    member here. Keep the wording natural
-                    and use the member's permission."
-
-                </p>
-
-
-                <div class="review-person">
-
-                    <div class="avatar">
-                        M
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Member Name
-                        </strong>
-
-                        <span>
-                            MS Fitness Member
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="review-card">
-
-                <div class="review-top">
-
-                    <div class="review-stars">
-                        ★★★★★
-                    </div>
-
-                    <span>
-                        MEMBER REVIEW
-                    </span>
-
-                </div>
-
-
-                <p>
-
-                    "Add another genuine review here about
-                    the trainers, environment, equipment,
-                    timings or overall experience."
-
-                </p>
-
-
-                <div class="review-person">
-
-                    <div class="avatar">
-                        S
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Member Name
-                        </strong>
-
-                        <span>
-                            MS Fitness Member
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="review-card">
-
-                <div class="review-top">
-
-                    <div class="review-stars">
-                        ★★★★★
-                    </div>
-
-                    <span>
-                        MEMBER REVIEW
-                    </span>
-
-                </div>
-
-
-                <p>
-
-                    "Use real feedback from your local members.
-                    Authentic reviews will make the website
-                    more trustworthy."
-
-                </p>
-
-
-                <div class="review-person">
-
-                    <div class="avatar">
-                        R
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Member Name
-                        </strong>
-
-                        <span>
-                            MS Fitness Member
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        </a>
 
     </div>
 
@@ -1733,148 +1531,80 @@
 ===================================================== -->
 
 <section
-    class="section contact dark-section"
+    class="section contact"
     id="contact"
 >
 
     <div class="container contact-grid">
 
 
-        <div class="contact-content">
+        <div class="contact-copy reveal">
 
-            <span class="section-label">
-                VISIT MS FITNESS
-            </span>
+            <div class="section-label">
+                CONTACT ELVYRA
+            </div>
 
 
             <h2>
 
                 READY TO
 
-                <span>GET STARTED?</span>
+                <span>START?</span>
 
             </h2>
 
 
             <p>
 
-                Have a question about membership, timings,
-                personal training or a free trial?
-                Send us an enquiry.
+                Ask about membership, personal training,
+                programs or a trial session.
 
             </p>
 
 
-            <div class="contact-details">
+            <div class="contact-mini-cards">
 
 
                 <div>
 
-                    <i class="fa-solid fa-location-dot"></i>
+                    <i class="fa-solid fa-dumbbell"></i>
 
-                    <div>
-
-                        <span>
-                            ADDRESS
-                        </span>
-
-                        <p>
-
-                            Top Floor of Bank of India,
-                            Rasayani, Near Janta School,
-                            Mohpada Alias Wasambe,
-                            Maharashtra 410222
-
-                        </p>
-
-                    </div>
+                    <span>
+                        MEMBERSHIP
+                    </span>
 
                 </div>
 
 
-
                 <div>
 
-                    <i class="fa-solid fa-phone"></i>
+                    <i class="fa-solid fa-user"></i>
 
-                    <div>
-
-                        <span>
-                            PHONE
-                        </span>
-
-                        <p>
-                            Add MS Fitness phone number
-                        </p>
-
-                    </div>
+                    <span>
+                        PERSONAL TRAINING
+                    </span>
 
                 </div>
 
 
-
                 <div>
 
-                    <i class="fa-brands fa-whatsapp"></i>
+                    <i class="fa-solid fa-bolt"></i>
 
-                    <div>
-
-                        <span>
-                            WHATSAPP
-                        </span>
-
-                        <p>
-                            Add MS Fitness WhatsApp number
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div>
-
-                    <i class="fa-solid fa-clock"></i>
-
-                    <div>
-
-                        <span>
-                            GYM TIMINGS
-                        </span>
-
-                        <p>
-                            Add actual MS Fitness timings
-                        </p>
-
-                    </div>
+                    <span>
+                        FITNESS PROGRAMS
+                    </span>
 
                 </div>
 
             </div>
 
-
-            <a
-                href="https://www.google.com/maps/search/?api=1&query=Top+Floor+of+Bank+of+India+Rasayani+Near+Janta+School+Mohpada+Alias+Wasambe+Maharashtra+410222"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="map-button"
-            >
-
-                <i class="fa-solid fa-map-location-dot"></i>
-
-                OPEN LOCATION IN MAP
-
-            </a>
-
         </div>
 
 
 
-        <!-- CONTACT FORM -->
-
         <form
-            class="contact-form"
+            class="contact-form glass-card reveal"
             id="contactForm"
         >
 
@@ -1885,12 +1615,8 @@
                 </span>
 
                 <h3>
-                    LET'S TALK
+                    LET'S TALK.
                 </h3>
-
-                <p>
-                    Fill in your details and our team can contact you.
-                </p>
 
             </div>
 
@@ -1904,6 +1630,7 @@
                 <input
                     type="text"
                     id="name"
+                    name="name"
                     placeholder="Enter your name"
                     required
                 >
@@ -1913,15 +1640,17 @@
 
             <div class="form-row">
 
+
                 <div class="input-group">
 
                     <label for="phone">
-                        PHONE NUMBER
+                        PHONE
                     </label>
 
                     <input
                         type="tel"
                         id="phone"
+                        name="phone"
                         placeholder="+91 XXXXX XXXXX"
                         required
                     >
@@ -1938,6 +1667,7 @@
                     <input
                         type="email"
                         id="email"
+                        name="email"
                         placeholder="Your email"
                     >
 
@@ -1949,30 +1679,29 @@
             <div class="input-group">
 
                 <label for="interest">
-                    I AM INTERESTED IN
+                    I'M INTERESTED IN
                 </label>
 
 
-                <select id="interest">
+                <select
+                    id="interest"
+                    name="interest"
+                >
 
                     <option value="">
                         Select an option
                     </option>
 
                     <option>
-                        Gym Membership
+                        Monthly Membership
                     </option>
 
                     <option>
-                        Free Trial
+                        6 Month Membership
                     </option>
 
                     <option>
-                        Weight Loss
-                    </option>
-
-                    <option>
-                        Muscle Gain
+                        Annual Membership
                     </option>
 
                     <option>
@@ -1980,7 +1709,11 @@
                     </option>
 
                     <option>
-                        General Fitness
+                        Free Trial
+                    </option>
+
+                    <option>
+                        General Enquiry
                     </option>
 
                 </select>
@@ -1996,8 +1729,9 @@
 
                 <textarea
                     id="message"
+                    name="message"
                     rows="5"
-                    placeholder="Tell us what you would like to know"
+                    placeholder="Tell us what you would like to know..."
                 ></textarea>
 
             </div>
@@ -2005,7 +1739,7 @@
 
             <button
                 type="submit"
-                class="btn btn-primary full-btn"
+                class="btn btn-primary submit-button"
             >
 
                 SEND ENQUIRY
@@ -2017,8 +1751,9 @@
 
             <p class="form-note">
 
-                Your enquiry form is frontend-only for now.
-                Your friend's backend can connect it later.
+                This form currently uses the existing
+                frontend behavior. Backend integration
+                can be added without changing this design.
 
             </p>
 
@@ -2039,43 +1774,56 @@
     <div class="container">
 
 
-        <div class="footer-grid">
+        <div class="footer-main">
 
 
-            <div>
+            <div class="footer-brand">
 
-                <a href="#home" class="logo">
+                <a
+                    href="#home"
+                    class="logo"
+                >
 
-                    MS <span>FITNESS</span>
+                    ELV<span>YRA</span>
 
                 </a>
 
 
                 <p>
-
-                    A local fitness center in Rasayani,
-                    Maharashtra, helping people build healthier
-                    and stronger routines.
-
+                    Elevate Your Strength.
                 </p>
 
 
-                <div class="footer-social">
+                <div class="social-links">
 
-                    <a href="#" aria-label="Instagram">
+
+                    <a
+                        href="#"
+                        aria-label="Instagram"
+                    >
+
                         <i class="fa-brands fa-instagram"></i>
+
                     </a>
 
-                    <a href="#" aria-label="Facebook">
+
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                    >
+
                         <i class="fa-brands fa-facebook-f"></i>
+
                     </a>
 
-                    <a href="#" aria-label="YouTube">
+
+                    <a
+                        href="#"
+                        aria-label="YouTube"
+                    >
+
                         <i class="fa-brands fa-youtube"></i>
-                    </a>
 
-                    <a href="#" aria-label="WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i>
                     </a>
 
                 </div>
@@ -2084,30 +1832,22 @@
 
 
 
-            <div>
+            <div class="footer-column">
 
                 <h4>
-                    QUICK LINKS
+                    EXPLORE
                 </h4>
 
-                <a href="#home">
-                    Home
-                </a>
-
                 <a href="#about">
-                    About Us
-                </a>
-
-                <a href="#goals">
-                    Fitness Goals
+                    About
                 </a>
 
                 <a href="#programs">
                     Programs
                 </a>
 
-                <a href="#gallery">
-                    Gallery
+                <a href="#experience">
+                    Experience
                 </a>
 
                 <a href="#trainers">
@@ -2118,63 +1858,44 @@
 
 
 
-            <div>
+            <div class="footer-column">
 
                 <h4>
                     MEMBERSHIP
                 </h4>
 
-                <a href="#pricing">
-                    Monthly • ₹1,000
+                <a href="#membership">
+                    Monthly • ₹1,200
                 </a>
 
-                <a href="#pricing">
-                    3 Months • ₹2,500
-                </a>
-
-                <a href="#pricing">
+                <a href="#membership">
                     6 Months • ₹5,000
                 </a>
 
-                <a href="#pricing">
-                    1 Year • ₹8,000
-                </a>
-
-                <a href="#pricing">
-                    Premium • ₹12,000
+                <a href="#membership">
+                    Annual • ₹8,000
                 </a>
 
             </div>
 
 
 
-            <div>
+            <div class="footer-column">
 
                 <h4>
-                    FIND US
+                    START
                 </h4>
 
+                <a href="#membership">
+                    View Plans
+                </a>
 
-                <p>
+                <a href="#contact">
+                    Make an Enquiry
+                </a>
 
-                    Top Floor of Bank of India,
-                    Rasayani, Near Janta School,
-                    Mohpada Alias Wasambe,
-                    Maharashtra 410222
-
-                </p>
-
-
-                <a
-                    href="https://www.google.com/maps/search/?api=1&query=Top+Floor+of+Bank+of+India+Rasayani+Near+Janta+School+Mohpada+Alias+Wasambe+Maharashtra+410222"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="footer-location"
-                >
-
-                    GET DIRECTIONS
-                    <i class="fa-solid fa-arrow-right"></i>
-
+                <a href="#contact">
+                    Personal Training
                 </a>
 
             </div>
@@ -2186,12 +1907,12 @@
         <div class="footer-bottom">
 
             <p>
-                © 2026 MS Fitness. All Rights Reserved.
+                © 2026 ELVYRA. All Rights Reserved.
             </p>
 
 
             <p>
-                Fitness for real life.
+                Elevate Your Strength.
             </p>
 
         </div>
@@ -2207,8 +1928,8 @@
 ===================================================== -->
 
 <button
-    id="backToTop"
     class="back-to-top"
+    id="backToTop"
     aria-label="Back to top"
 >
 
@@ -2217,7 +1938,13 @@
 </button>
 
 
+
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
